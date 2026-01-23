@@ -1,0 +1,431 @@
+﻿{
+  "meta": {
+    "currency": "CNY",
+    "priceSource": "manual",
+    "lastUpdated": "2026-01-23"
+  },
+  "cpus": [
+    {
+      "id": "i3-12100f",
+      "name": "Intel i3-12100F",
+      "brand": "Intel",
+      "platform": "LGA1700",
+      "memoryType": "DDR4/DDR5",
+      "tdp": 89,
+      "score": 60,
+      "priceRange": {"min": 600, "max": 800},
+      "tags": ["value"],
+      "notes": "入门四核"
+    },
+    {
+      "id": "i5-12400f",
+      "name": "Intel i5-12400F",
+      "brand": "Intel",
+      "platform": "LGA1700",
+      "memoryType": "DDR4/DDR5",
+      "tdp": 117,
+      "score": 72,
+      "priceRange": {"min": 900, "max": 1100},
+      "tags": ["value", "mainstream"],
+      "notes": "主流六核"
+    },
+    {
+      "id": "i5-13400f",
+      "name": "Intel i5-13400F",
+      "brand": "Intel",
+      "platform": "LGA1700",
+      "memoryType": "DDR4/DDR5",
+      "tdp": 148,
+      "score": 80,
+      "priceRange": {"min": 1200, "max": 1500},
+      "tags": ["mainstream"],
+      "notes": "主流增强"
+    },
+    {
+      "id": "i7-13700f",
+      "name": "Intel i7-13700F",
+      "brand": "Intel",
+      "platform": "LGA1700",
+      "memoryType": "DDR4/DDR5",
+      "tdp": 219,
+      "score": 92,
+      "priceRange": {"min": 2300, "max": 2800},
+      "tags": ["performance"],
+      "notes": "高性能"
+    },
+    {
+      "id": "r5-5600",
+      "name": "AMD Ryzen 5 5600",
+      "brand": "AMD",
+      "platform": "AM4",
+      "memoryType": "DDR4",
+      "tdp": 65,
+      "score": 68,
+      "priceRange": {"min": 700, "max": 900},
+      "tags": ["value"],
+      "notes": "性价比"
+    },
+    {
+      "id": "r5-7600",
+      "name": "AMD Ryzen 5 7600",
+      "brand": "AMD",
+      "platform": "AM5",
+      "memoryType": "DDR5",
+      "tdp": 88,
+      "score": 82,
+      "priceRange": {"min": 1300, "max": 1600},
+      "tags": ["mainstream"],
+      "notes": "新平台"
+    },
+    {
+      "id": "r7-7700",
+      "name": "AMD Ryzen 7 7700",
+      "brand": "AMD",
+      "platform": "AM5",
+      "memoryType": "DDR5",
+      "tdp": 105,
+      "score": 90,
+      "priceRange": {"min": 1700, "max": 2100},
+      "tags": ["performance"],
+      "notes": "多核"
+    }
+  ],
+  "gpus": [
+    {
+      "id": "no-gpu",
+      "name": "无独显",
+      "brand": "Integrated",
+      "vram": 0,
+      "power": 0,
+      "score": 10,
+      "priceRange": {"min": 0, "max": 0},
+      "tags": ["office", "quiet"],
+      "notes": "适合轻负载"
+    },
+    {
+      "id": "rx-6600",
+      "name": "AMD RX 6600 8GB",
+      "brand": "AMD",
+      "vram": 8,
+      "power": 132,
+      "score": 65,
+      "priceRange": {"min": 1400, "max": 1700},
+      "tags": ["value"],
+      "notes": "1080p游戏"
+    },
+    {
+      "id": "rx-7600",
+      "name": "AMD RX 7600 8GB",
+      "brand": "AMD",
+      "vram": 8,
+      "power": 165,
+      "score": 72,
+      "priceRange": {"min": 2000, "max": 2400},
+      "tags": ["mainstream"],
+      "notes": "主流"
+    },
+    {
+      "id": "rx-7800xt",
+      "name": "AMD RX 7800 XT 16GB",
+      "brand": "AMD",
+      "vram": 16,
+      "power": 263,
+      "score": 88,
+      "priceRange": {"min": 3800, "max": 4500},
+      "tags": ["performance"],
+      "notes": "2K游戏"
+    },
+    {
+      "id": "rx-7900xtx",
+      "name": "AMD RX 7900 XTX 24GB",
+      "brand": "AMD",
+      "vram": 24,
+      "power": 355,
+      "score": 98,
+      "priceRange": {"min": 8000, "max": 9500},
+      "tags": ["performance"],
+      "notes": "高端"
+    },
+    {
+      "id": "rtx-4060",
+      "name": "NVIDIA RTX 4060 8GB",
+      "brand": "NVIDIA",
+      "vram": 8,
+      "power": 115,
+      "score": 70,
+      "priceRange": {"min": 2200, "max": 2600},
+      "tags": ["mainstream"],
+      "notes": "主流"
+    },
+    {
+      "id": "rtx-4070",
+      "name": "NVIDIA RTX 4070 12GB",
+      "brand": "NVIDIA",
+      "vram": 12,
+      "power": 200,
+      "score": 85,
+      "priceRange": {"min": 4000, "max": 4800},
+      "tags": ["performance"],
+      "notes": "2K游戏"
+    },
+    {
+      "id": "rtx-4070s",
+      "name": "NVIDIA RTX 4070 Super 12GB",
+      "brand": "NVIDIA",
+      "vram": 12,
+      "power": 220,
+      "score": 90,
+      "priceRange": {"min": 5000, "max": 5800},
+      "tags": ["performance"],
+      "notes": "强化"
+    },
+    {
+      "id": "rtx-4090",
+      "name": "NVIDIA RTX 4090 24GB",
+      "brand": "NVIDIA",
+      "vram": 24,
+      "power": 450,
+      "score": 100,
+      "priceRange": {"min": 13000, "max": 16000},
+      "tags": ["performance"],
+      "notes": "旗舰"
+    }
+  ],
+  "motherboards": [
+    {
+      "id": "b450",
+      "name": "B450 主板",
+      "platform": "AM4",
+      "memoryType": "DDR4",
+      "formFactor": "mATX",
+      "score": 50,
+      "priceRange": {"min": 450, "max": 600},
+      "notes": "入门"
+    },
+    {
+      "id": "b550",
+      "name": "B550 主板",
+      "platform": "AM4",
+      "memoryType": "DDR4",
+      "formFactor": "ATX",
+      "score": 65,
+      "priceRange": {"min": 650, "max": 900},
+      "notes": "主流"
+    },
+    {
+      "id": "b650",
+      "name": "B650 主板",
+      "platform": "AM5",
+      "memoryType": "DDR5",
+      "formFactor": "ATX",
+      "score": 72,
+      "priceRange": {"min": 900, "max": 1300},
+      "notes": "新平台"
+    },
+    {
+      "id": "b760-d4",
+      "name": "B760 DDR4 主板",
+      "platform": "LGA1700",
+      "memoryType": "DDR4",
+      "formFactor": "mATX",
+      "score": 65,
+      "priceRange": {"min": 700, "max": 1000},
+      "notes": "主流"
+    },
+    {
+      "id": "b760-d5",
+      "name": "B760 DDR5 主板",
+      "platform": "LGA1700",
+      "memoryType": "DDR5",
+      "formFactor": "ATX",
+      "score": 70,
+      "priceRange": {"min": 900, "max": 1200},
+      "notes": "主流"
+    },
+    {
+      "id": "z790",
+      "name": "Z790 DDR5 主板",
+      "platform": "LGA1700",
+      "memoryType": "DDR5",
+      "formFactor": "ATX",
+      "score": 85,
+      "priceRange": {"min": 1500, "max": 2200},
+      "notes": "高端"
+    }
+  ],
+  "memory": [
+    {
+      "id": "ddr4-16",
+      "name": "DDR4 16GB 3200",
+      "memoryType": "DDR4",
+      "size": 16,
+      "score": 55,
+      "priceRange": {"min": 300, "max": 450},
+      "notes": "入门"
+    },
+    {
+      "id": "ddr4-32",
+      "name": "DDR4 32GB 3200",
+      "memoryType": "DDR4",
+      "size": 32,
+      "score": 70,
+      "priceRange": {"min": 550, "max": 750},
+      "notes": "主流"
+    },
+    {
+      "id": "ddr5-16",
+      "name": "DDR5 16GB 5200",
+      "memoryType": "DDR5",
+      "size": 16,
+      "score": 65,
+      "priceRange": {"min": 450, "max": 650},
+      "notes": "入门"
+    },
+    {
+      "id": "ddr5-32",
+      "name": "DDR5 32GB 6000",
+      "memoryType": "DDR5",
+      "size": 32,
+      "score": 80,
+      "priceRange": {"min": 850, "max": 1200},
+      "notes": "主流"
+    }
+  ],
+  "storage": [
+    {
+      "id": "sata-1t",
+      "name": "SATA SSD 1TB",
+      "type": "SATA",
+      "size": 1,
+      "score": 50,
+      "priceRange": {"min": 250, "max": 350},
+      "notes": "入门"
+    },
+    {
+      "id": "nvme-1t-gen3",
+      "name": "NVMe SSD 1TB Gen3",
+      "type": "NVMe",
+      "size": 1,
+      "score": 65,
+      "priceRange": {"min": 350, "max": 500},
+      "notes": "主流"
+    },
+    {
+      "id": "nvme-1t-gen4",
+      "name": "NVMe SSD 1TB Gen4",
+      "type": "NVMe",
+      "size": 1,
+      "score": 75,
+      "priceRange": {"min": 450, "max": 650},
+      "notes": "较快"
+    },
+    {
+      "id": "nvme-2t-gen4",
+      "name": "NVMe SSD 2TB Gen4",
+      "type": "NVMe",
+      "size": 2,
+      "score": 85,
+      "priceRange": {"min": 800, "max": 1200},
+      "notes": "大容量"
+    }
+  ],
+  "psu": [
+    {
+      "id": "psu-550",
+      "name": "550W 金牌电源",
+      "watt": 550,
+      "efficiency": "Gold",
+      "score": 55,
+      "priceRange": {"min": 250, "max": 350},
+      "notes": "入门"
+    },
+    {
+      "id": "psu-650",
+      "name": "650W 金牌电源",
+      "watt": 650,
+      "efficiency": "Gold",
+      "score": 65,
+      "priceRange": {"min": 350, "max": 500},
+      "notes": "主流"
+    },
+    {
+      "id": "psu-750",
+      "name": "750W 金牌电源",
+      "watt": 750,
+      "efficiency": "Gold",
+      "score": 72,
+      "priceRange": {"min": 450, "max": 650},
+      "notes": "主流"
+    },
+    {
+      "id": "psu-850",
+      "name": "850W 金牌电源",
+      "watt": 850,
+      "efficiency": "Gold",
+      "score": 82,
+      "priceRange": {"min": 650, "max": 900},
+      "notes": "高端"
+    },
+    {
+      "id": "psu-1000",
+      "name": "1000W 金牌电源",
+      "watt": 1000,
+      "efficiency": "Gold",
+      "score": 90,
+      "priceRange": {"min": 900, "max": 1300},
+      "notes": "旗舰"
+    }
+  ],
+  "cases": [
+    {
+      "id": "case-matx",
+      "name": "mATX 机箱",
+      "formFactor": "mATX",
+      "score": 55,
+      "priceRange": {"min": 200, "max": 350},
+      "notes": "紧凑"
+    },
+    {
+      "id": "case-mid",
+      "name": "中塔机箱",
+      "formFactor": "ATX",
+      "score": 65,
+      "priceRange": {"min": 300, "max": 500},
+      "notes": "通用"
+    },
+    {
+      "id": "case-air",
+      "name": "风道机箱",
+      "formFactor": "ATX",
+      "score": 75,
+      "priceRange": {"min": 400, "max": 700},
+      "notes": "散热"
+    }
+  ],
+  "coolers": [
+    {
+      "id": "cooler-basic",
+      "name": "基础风冷",
+      "tdpSupport": 120,
+      "score": 50,
+      "priceRange": {"min": 80, "max": 150},
+      "notes": "入门"
+    },
+    {
+      "id": "cooler-mid",
+      "name": "双塔风冷",
+      "tdpSupport": 200,
+      "score": 70,
+      "priceRange": {"min": 180, "max": 300},
+      "notes": "主流"
+    },
+    {
+      "id": "cooler-aio",
+      "name": "240 水冷",
+      "tdpSupport": 260,
+      "score": 85,
+      "priceRange": {"min": 350, "max": 600},
+      "notes": "高端"
+    }
+  ]
+}

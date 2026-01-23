@@ -1,0 +1,95 @@
+﻿{
+  "budgets": [
+    {"id": "tier-3000", "label": "3000-3999", "min": 3000, "max": 3999},
+    {"id": "tier-4000", "label": "4000-5999", "min": 4000, "max": 5999},
+    {"id": "tier-6000", "label": "6000-8999", "min": 6000, "max": 8999},
+    {"id": "tier-9000", "label": "9000-12999", "min": 9000, "max": 12999},
+    {"id": "tier-13000", "label": "13000-17999", "min": 13000, "max": 17999},
+    {"id": "tier-18000", "label": "18000-25000", "min": 18000, "max": 25000}
+  ],
+  "scenarios": [
+    {
+      "id": "gaming",
+      "label": "游戏",
+      "weights": {"gpu": 0.4, "cpu": 0.2, "motherboard": 0.1, "memory": 0.1, "storage": 0.1, "psu": 0.05, "case": 0.03, "cooler": 0.02},
+      "minScores": {"cpu": 70, "gpu": 70},
+      "minVram": 8
+    },
+    {
+      "id": "office",
+      "label": "办公",
+      "weights": {"gpu": 0.1, "cpu": 0.25, "motherboard": 0.15, "memory": 0.2, "storage": 0.2, "psu": 0.05, "case": 0.03, "cooler": 0.02},
+      "minScores": {"cpu": 55, "gpu": 10},
+      "minVram": 0
+    },
+    {
+      "id": "dev",
+      "label": "开发",
+      "weights": {"gpu": 0.15, "cpu": 0.3, "motherboard": 0.1, "memory": 0.2, "storage": 0.2, "psu": 0.03, "case": 0.01, "cooler": 0.01},
+      "minScores": {"cpu": 65, "gpu": 10},
+      "minVram": 0
+    },
+    {
+      "id": "design",
+      "label": "设计/剪辑",
+      "weights": {"gpu": 0.3, "cpu": 0.25, "motherboard": 0.05, "memory": 0.2, "storage": 0.15, "psu": 0.03, "case": 0.01, "cooler": 0.01},
+      "minScores": {"cpu": 70, "gpu": 70},
+      "minVram": 8
+    },
+    {
+      "id": "ai",
+      "label": "轻度AI",
+      "weights": {"gpu": 0.45, "cpu": 0.2, "motherboard": 0.05, "memory": 0.15, "storage": 0.1, "psu": 0.03, "case": 0.01, "cooler": 0.01},
+      "minScores": {"cpu": 70, "gpu": 80},
+      "minVram": 12
+    }
+  ],
+  "modes": [
+    {
+      "id": "value",
+      "label": "性价比优先",
+      "scoreBias": {"price": 0.6, "performance": 0.4},
+      "powerBias": "low",
+      "noiseBias": "low"
+    },
+    {
+      "id": "performance",
+      "label": "性能优先",
+      "scoreBias": {"price": 0.3, "performance": 0.7},
+      "powerBias": "any",
+      "noiseBias": "any"
+    },
+    {
+      "id": "quiet",
+      "label": "静音优先",
+      "scoreBias": {"price": 0.5, "performance": 0.5},
+      "powerBias": "low",
+      "noiseBias": "low"
+    }
+  ],
+  "constraints": {
+    "cpuMotherboardMatch": true,
+    "memoryMatch": true,
+    "caseFormFactorMatch": true,
+    "psuHeadroom": 1.4,
+    "coolerTdpRatio": 1.2,
+    "allowUsed": false
+  },
+  "selection": {
+    "minGpuVram": {"ai": {"nvidia": 12, "amd": 16}, "design": 8, "gaming": 8},
+    "brandPreference": {
+      "gpu": ["AMD", "NVIDIA"],
+      "policy": "preferred"
+    },
+    "fallbackOrder": ["score", "price", "power"],
+    "budgetTolerance": 0.12
+  },
+  "pricing": {
+    "useRange": true,
+    "rangeTolerance": 0.12
+  },
+  "strategy": {
+    "upgradeOrder": ["gpu", "cpu", "memory", "storage", "cooler"],
+    "downgradeOrder": ["case", "cooler", "storage", "memory", "motherboard"]
+  }
+}

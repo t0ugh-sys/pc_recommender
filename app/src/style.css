@@ -1,0 +1,398 @@
+﻿:root {
+  color-scheme: light;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #f5f6f8;
+  color: #1e1e1e;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f6f8;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 32px auto 80px;
+  padding: 0 20px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 28px;
+  background: linear-gradient(135deg, #f0f6ff, #ffffff);
+  border-radius: 18px;
+  border: 1px solid #e6edf7;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.hero .subtitle {
+  margin: 0;
+  color: #555;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f6feb;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.hero-tags span {
+  background: #e8f0ff;
+  color: #1f4fd6;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hero-panel {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+}
+
+.hero-panel h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.hero-panel ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-title p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #1f6feb;
+}
+
+.toggle span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+select,
+button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+  background: #fff;
+}
+
+button {
+  background: #1f6feb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #1a5fd0;
+}
+
+.status {
+  color: #666;
+}
+
+.status.error {
+  color: #b42318;
+}
+
+.status.hint {
+  color: #2563eb;
+  font-size: 13px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin-bottom: 16px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #eef2f7;
+  font-size: 14px;
+}
+
+.summary-item span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.summary-item strong {
+  color: #111827;
+}
+
+.summary-item.highlight {
+  background: #ecfeff;
+  border-color: #bae6fd;
+}
+
+.diy-panel {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.diy-panel h3 {
+  margin: 0 0 6px;
+}
+
+.diy-panel p {
+  margin: 0 0 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.diy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.component-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.component-icon {
+  min-width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #eef2ff;
+  color: #3730a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+[data-type='cpu'] .component-icon,
+.component-icon[data-type='cpu'] {
+  background: #e0f2fe;
+  color: #0f4c81;
+}
+
+[data-type='gpu'] .component-icon,
+.component-icon[data-type='gpu'] {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+[data-type='motherboard'] .component-icon,
+.component-icon[data-type='motherboard'] {
+  background: #ecfccb;
+  color: #365314;
+}
+
+[data-type='memory'] .component-icon,
+.component-icon[data-type='memory'] {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+[data-type='storage'] .component-icon,
+.component-icon[data-type='storage'] {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+[data-type='psu'] .component-icon,
+.component-icon[data-type='psu'] {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+[data-type='case'] .component-icon,
+.component-icon[data-type='case'] {
+  background: #dcfce7;
+  color: #166534;
+}
+
+[data-type='cooler'] .component-icon,
+.component-icon[data-type='cooler'] {
+  background: #cffafe;
+  color: #155e75;
+}
+
+.component-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.component-name {
+  font-size: 14px;
+  color: #111827;
+}
+
+.component-price {
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e6e8eb;
+  font-size: 14px;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+.warnings {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: #4b5563;
+}
+
+.list li {
+  margin-bottom: 6px;
+}
+
+code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+@media (max-width: 720px) {
+  .card-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
