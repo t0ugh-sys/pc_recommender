@@ -16,6 +16,7 @@ class Settings:
     )
     sync_interval_seconds: int = int(os.getenv("SYNC_INTERVAL_SECONDS", "86400"))
     sync_enabled: bool = _to_bool(os.getenv("SYNC_ENABLED"), True)
+    admin_token: str = os.getenv("ADMIN_TOKEN", "")
 
 
 settings = Settings()

@@ -81,6 +81,12 @@
       "gpu": ["AMD", "NVIDIA"],
       "policy": "preferred"
     },
+    "memorySticks": {
+      "default": 2,
+      "ddr5": 2,
+      "highCapacity": 4,
+      "highCapacityThreshold": 32
+    },
     "fallbackOrder": ["score", "price", "power"],
     "budgetTolerance": 0.12
   },

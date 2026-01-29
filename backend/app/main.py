@@ -1,5 +1,5 @@
 ﻿import asyncio
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 import logging
 
 from fastapi import FastAPI
@@ -22,6 +22,8 @@ async def lifespan(app: FastAPI):
     sync.stop_sync_loop()
     if task:
         task.cancel()
+        with suppress(asyncio.CancelledError):
+            await task
 
 
 app = FastAPI(title="PC Recommender API", lifespan=lifespan)
