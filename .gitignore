@@ -1,0 +1,8 @@
+# Legacy folder left behind after renaming app/ -> frontend/ (contains local deps only)
+/app/
+
+# Common build artifacts
+**/node_modules/
+**/dist/
+**/.vite/
+

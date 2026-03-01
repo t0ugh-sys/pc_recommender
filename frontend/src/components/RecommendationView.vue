@@ -1,6 +1,7 @@
-﻿<script setup>
-import { computed } from 'vue'
+<script setup>
+import { computed, onMounted, ref } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
+import PageHeader from './PageHeader.vue'
 
 const {
   dataSource,
@@ -23,76 +24,130 @@ const {
   diyWarnings,
   handleSubmit,
   getOptions,
-  updateSelection
+  updateSelection,
+  applySharedPayload,
+  saveShare,
+  loadShare,
+  shareState
 } = useRecommendation()
 
-const selectedBudgetLabel = computed(() => budgets.value?.find(item => item.id === form.budgetId)?.label || '未选择')
-const selectedScenarioLabel = computed(() => scenarios.value?.find(item => item.id === form.scenarioId)?.label || '未选择')
-const selectedModeLabel = computed(() => modes.value?.find(item => item.id === form.modeId)?.label || '未选择')
+const shareTitle = ref('')
+const shareUrl = ref('')
+const shareMessage = ref('')
+const shareLoading = ref(false)
+
+const selectedBudgetLabel = computed(() => budgets.value?.find(item => item.id === form.value.budgetId)?.label || '未选择')
+const selectedScenarioLabel = computed(() => scenarios.value?.find(item => item.id === form.value.scenarioId)?.label || '未选择')
+const selectedModeLabel = computed(() => modes.value?.find(item => item.id === form.value.modeId)?.label || '未选择')
 const selectedGpuLabel = computed(() => {
-  if (form.gpuBrand === 'none') return '无独显'
-  if (form.gpuBrand === 'AMD') return 'AMD'
-  if (form.gpuBrand === 'NVIDIA') return 'NVIDIA'
+  if (form.value.gpuBrand === 'none') return '无独显'
+  if (form.value.gpuBrand === 'AMD') return 'AMD'
+  if (form.value.gpuBrand === 'NVIDIA') return 'NVIDIA'
   return '不限'
 })
 const selectedMemoryTypeLabel = computed(() => {
-  if (form.memoryType === 'DDR4') return 'DDR4'
-  if (form.memoryType === 'DDR5') return 'DDR5'
+  if (form.value.memoryType === 'DDR4') return 'DDR4'
+  if (form.value.memoryType === 'DDR5') return 'DDR5'
   return '自动'
 })
 const selectedMemorySticksLabel = computed(() => {
-  if (form.memorySticks === '2') return '2 根'
-  if (form.memorySticks === '4') return '4 根'
+  if (form.value.memorySticks === '2') return '2 根'
+  if (form.value.memorySticks === '4') return '4 根'
   return '自动'
+})
+
+const headerMeta = computed(() => [
+  `预算：${selectedBudgetLabel.value}`,
+  `场景：${selectedScenarioLabel.value}`,
+  `模式：${selectedModeLabel.value}`,
+  `显卡：${selectedGpuLabel.value}`,
+  `内存代际：${selectedMemoryTypeLabel.value}`,
+  `内存条数：${selectedMemorySticksLabel.value}`,
+  `DIY：${form.value.diyMode ? '开启' : '关闭'}`
+])
+
+const formatPriceRange = (item) => {
+  if (!item?.priceRange) return '--'
+  return `￥${item.priceRange.min} - ￥${item.priceRange.max}`
+}
+
+const buildShareUrl = (shareId) => {
+  const url = new URL(window.location.href)
+  url.searchParams.set('share', shareId)
+  const basePath = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
+  url.pathname = basePath ? `${basePath}/` : '/'
+  return url.toString()
+}
+
+const handleSaveShare = async () => {
+  shareLoading.value = true
+  shareMessage.value = ''
+  try {
+    const shareId = await saveShare(shareTitle.value)
+    if (shareId) {
+      shareUrl.value = buildShareUrl(shareId)
+      shareMessage.value = shareState.value.error || '分享已生成'
+    } else {
+      shareMessage.value = shareState.value.error || '分享失败'
+    }
+  } finally {
+    shareLoading.value = false
+  }
+}
+
+const handleCopyShare = async () => {
+  if (!shareUrl.value) return
+  try {
+    await navigator.clipboard.writeText(shareUrl.value)
+    shareMessage.value = '链接已复制'
+  } catch (err) {
+    shareMessage.value = '复制失败，请手动选择链接'
+  }
+}
+
+const getAlternatives = (key) => result.value?.alternatives?.[key] ?? []
+
+onMounted(async () => {
+  const params = new URLSearchParams(window.location.search)
+  const shareId = params.get('share')
+  if (!shareId) return
+  try {
+    const payload = await loadShare(shareId)
+    applySharedPayload(payload)
+    shareUrl.value = buildShareUrl(shareId)
+    shareMessage.value = '已加载分享方案'
+  } catch (err) {
+    shareMessage.value = '分享加载失败'
+  }
 })
 
 </script>
 
 <template>
-  <div class="flex flex-col gap-8">
-    <header class="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <div class="flex flex-col gap-4">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em]">PC 配置推荐</p>
-        <div class="flex flex-col gap-3">
-          <h1 class="text-3xl font-semibold leading-tight">主机配置推荐</h1>
-          <p class="text-base leading-6">输入预算、场景与偏好，生成可落地的主机方案。</p>
+  <div class="flex flex-col gap-6 md:gap-8">
+    <PageHeader
+      eyebrow="推荐"
+      title="主机配置推荐"
+      description="输入预算、场景与偏好，生成可落地的主机方案。"
+      :meta="headerMeta"
+    >
+      <template #bottom>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">预算拆分</p>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">按场景权重分配预算。</p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">兼容校验</p>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">平台与规格联动校验。</p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">功耗估算</p>
+            <p class="mt-2 text-sm leading-6 text-neutral-600">给出电源冗余建议。</p>
+          </div>
         </div>
-      </div>
-      <div class="mt-6 grid gap-4 md:grid-cols-3">
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">预算拆分</p>
-          <p class="mt-2 text-sm leading-6">场景权重分配预算。</p>
-        </div>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">兼容校验</p>
-          <p class="mt-2 text-sm leading-6">平台与规格匹配。</p>
-        </div>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">功耗估算</p>
-          <p class="mt-2 text-sm leading-6">电源冗余建议。</p>
-        </div>
-      </div>
-      <div class="mt-6 flex flex-wrap gap-2 text-xs">
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          预算：{{ selectedBudgetLabel }}
-        </span>
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          场景：{{ selectedScenarioLabel }}
-        </span>
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          模式：{{ selectedModeLabel }}
-        </span>
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          显卡：{{ selectedGpuLabel }}
-        </span>
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          内存代际：{{ selectedMemoryTypeLabel }}
-        </span>
-        <span class="rounded-full border border-neutral-300 px-3 py-1">
-          内存条数：{{ selectedMemorySticksLabel }}
-        </span>
-      </div>
-    </header>
+      </template>
+    </PageHeader>
 
     <section class="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
       <div class="flex flex-col gap-6">
@@ -250,6 +305,26 @@ const selectedMemorySticksLabel = computed(() => {
                     {{ categoryIcons[item.key] }}
                   </span>
                 </div>
+                <div v-if="getAlternatives(item.key).length" class="text-xs md:col-span-3">
+                  <p class="mt-2 text-xs font-semibold">备选推荐</p>
+                  <div class="mt-2 flex flex-col gap-2">
+                    <div
+                      v-for="alt in getAlternatives(item.key)"
+                      :key="alt.id"
+                      class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-neutral-200 bg-white px-3 py-2"
+                    >
+                      <div class="text-xs font-semibold">{{ alt.name }}</div>
+                      <div class="text-xs">{{ formatPriceRange(alt) }}</div>
+                      <button
+                        v-if="form.diyMode"
+                        class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold"
+                        @click="updateSelection(item.key, alt.id)"
+                      >
+                        替换
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -264,6 +339,46 @@ const selectedMemorySticksLabel = computed(() => {
             <span v-for="reason in result.reasons" :key="reason" class="rounded-full border border-neutral-300 px-3 py-1">
               {{ reason }}
             </span>
+          </div>
+        </section>
+
+        <section v-if="result" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-semibold">保存与分享</h2>
+            <span class="text-xs font-semibold">链接</span>
+          </div>
+          <div class="mt-4 grid gap-4">
+            <label class="flex flex-col gap-2 text-sm font-semibold">
+              方案名称（可选）
+              <input
+                v-model="shareTitle"
+                type="text"
+                placeholder="例如：设计向 9K 预算"
+                class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+              />
+            </label>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <button
+                class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+                :disabled="shareLoading"
+                @click="handleSaveShare"
+              >
+                生成分享链接
+              </button>
+              <button
+                class="h-12 w-full rounded-2xl border border-neutral-300 bg-white text-sm font-semibold"
+                :disabled="!shareUrl"
+                @click="handleCopyShare"
+              >
+                复制链接
+              </button>
+            </div>
+            <div v-if="shareUrl" class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-xs break-all">
+              {{ shareUrl }}
+            </div>
+            <div v-if="shareMessage" class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm">
+              {{ shareMessage }}
+            </div>
           </div>
         </section>
 
@@ -343,7 +458,7 @@ const selectedMemorySticksLabel = computed(() => {
       <ul class="mt-4 flex flex-col gap-3 text-sm leading-6">
         <li>更新 `data/components.json` 可维护配件库与价格区间。</li>
         <li>更新 `data/rules.json` 可调整预算权重与选型规则。</li>
-        <li>每次更新后请同步到 `app/public/data/` 目录。</li>
+        <li>每次更新后请同步到 `frontend/public/data/` 目录。</li>
       </ul>
     </section>
 

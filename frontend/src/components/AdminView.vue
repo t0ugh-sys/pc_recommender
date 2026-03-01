@@ -1,5 +1,6 @@
-﻿<script setup>
+<script setup>
 import { ref, computed, onMounted } from 'vue'
+import PageHeader from './PageHeader.vue'
 
 const adminStatus = ref({
   last_status: '',
@@ -17,6 +18,20 @@ const editorError = ref('')
 const editorStatus = ref('')
 const editorHighlightKey = ref('')
 const editorIssues = ref([])
+const rulesDraft = ref(null)
+const rulesDraftStatus = ref('')
+const rulesDraftError = ref('')
+const defaultWeightKeys = ['cpu', 'gpu', 'motherboard', 'memory', 'storage', 'psu', 'cooler', 'case']
+const rulesWeightKeys = computed(() => {
+  if (rulesDraft.value?.scenarios?.length) {
+    const set = new Set()
+    rulesDraft.value.scenarios.forEach((scenario) => {
+      Object.keys(scenario?.weights || {}).forEach((key) => set.add(key))
+    })
+    if (set.size) return Array.from(set)
+  }
+  return defaultWeightKeys
+})
 
 const apiBase = computed(() => import.meta.env.VITE_API_BASE || '')
 const adminKeys = computed(() => {
@@ -139,6 +154,9 @@ const handleLoadConfig = async () => {
     if (!adminToken.value) throw new Error('请先输入管理令牌')
     await loadConfigPayload(editorKey.value)
     editorStatus.value = '配置已加载'
+    if (editorKey.value === 'rules') {
+      loadRulesDraftFromEditor()
+    }
   } catch (err) {
     editorError.value = err?.message ?? '加载配置失败'
     editorStatus.value = editorError.value
@@ -157,6 +175,95 @@ const handleFormatConfig = () => {
     editorError.value = 'JSON 格式错误，无法格式化'
     editorStatus.value = editorError.value
   }
+}
+
+const clonePayload = (payload) => JSON.parse(JSON.stringify(payload || {}))
+
+const buildDefaultWeights = () => {
+  const keys = rulesWeightKeys.value.length ? rulesWeightKeys.value : defaultWeightKeys
+  const weight = Number((1 / keys.length).toFixed(4))
+  return Object.fromEntries(keys.map((key) => [key, weight]))
+}
+
+const loadRulesDraftFromEditor = () => {
+  rulesDraftError.value = ''
+  rulesDraftStatus.value = ''
+  if (editorKey.value !== 'rules') {
+    rulesDraftError.value = '当前配置不是 rules'
+    rulesDraftStatus.value = rulesDraftError.value
+    return
+  }
+  try {
+    const payload = JSON.parse(editorText.value || '{}')
+    rulesDraft.value = clonePayload(payload)
+    if (!Array.isArray(rulesDraft.value.budgets)) rulesDraft.value.budgets = []
+    if (!Array.isArray(rulesDraft.value.scenarios)) rulesDraft.value.scenarios = []
+    if (!Array.isArray(rulesDraft.value.modes)) rulesDraft.value.modes = []
+    rulesDraft.value.scenarios = rulesDraft.value.scenarios.map((scenario) => ({
+      ...scenario,
+      weights: scenario?.weights && typeof scenario.weights === 'object' ? scenario.weights : buildDefaultWeights(),
+      minScores: scenario?.minScores && typeof scenario.minScores === 'object'
+        ? scenario.minScores
+        : { cpu: 0, gpu: 0 }
+    }))
+    rulesDraftStatus.value = '规则草稿已加载'
+  } catch (err) {
+    rulesDraftError.value = 'JSON 格式错误，无法加载规则草稿'
+    rulesDraftStatus.value = rulesDraftError.value
+  }
+}
+
+const applyRulesDraftToEditor = () => {
+  rulesDraftError.value = ''
+  rulesDraftStatus.value = ''
+  if (!rulesDraft.value) {
+    rulesDraftError.value = '规则草稿为空'
+    rulesDraftStatus.value = rulesDraftError.value
+    return
+  }
+  editorText.value = JSON.stringify(rulesDraft.value, null, 2)
+  rulesDraftStatus.value = '已应用到 JSON 编辑器'
+}
+
+const addBudget = () => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.budgets.push({ id: '', label: '', min: 0, max: 0 })
+}
+
+const removeBudget = (index) => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.budgets.splice(index, 1)
+}
+
+const addScenario = () => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.scenarios.push({
+    id: '',
+    label: '',
+    weights: buildDefaultWeights(),
+    minScores: { cpu: 0, gpu: 0 },
+    minVram: 0
+  })
+}
+
+const removeScenario = (index) => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.scenarios.splice(index, 1)
+}
+
+const addMode = () => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.modes.push({
+    id: '',
+    label: '',
+    scoreBias: { price: 0.5, performance: 0.5 },
+    powerBias: 'balanced'
+  })
+}
+
+const removeMode = (index) => {
+  if (!rulesDraft.value) return
+  rulesDraft.value.modes.splice(index, 1)
 }
 
 const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0
@@ -369,51 +476,52 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8">
-    <header class="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <p class="text-sm font-semibold uppercase tracking-[0.2em]">管理控制台</p>
-      <div class="mt-4 flex flex-col gap-3">
-        <h1 class="text-3xl font-semibold leading-tight">配置与同步</h1>
-        <p class="text-base leading-6">
-          维护规则与配件库，必要时触发同步。
-        </p>
-      </div>
-      <div class="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-        <label class="flex flex-col gap-2 text-sm font-semibold">
-          管理令牌
-          <input
-            v-model="adminToken"
-            type="password"
-            placeholder="输入 ADMIN_TOKEN"
-            class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
-            @change="localStorage.setItem('pc_admin_token', adminToken)"
-          />
-        </label>
-        <p class="mt-2 text-xs leading-5">
-          后端需要 `ADMIN_TOKEN`，本地会保存到浏览器。
-        </p>
-      </div>
-      <div class="mt-6 grid gap-4 md:grid-cols-3">
+  <div class="flex flex-col gap-6 md:gap-8">
+    <PageHeader
+      eyebrow="管理"
+      title="配置与同步"
+      description="维护规则与配件库，必要时触发同步。"
+    >
+      <template #right>
         <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">同步状态</p>
-          <p class="mt-2 text-base leading-6">
-            {{ adminStatus.last_status || 'unknown' }}
+          <label class="flex flex-col gap-2 text-sm font-semibold">
+            管理令牌
+            <input
+              v-model="adminToken"
+              type="password"
+              placeholder="输入 ADMIN_TOKEN"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+              @change="localStorage.setItem('pc_admin_token', adminToken)"
+            />
+          </label>
+          <p class="mt-2 text-xs leading-5 text-neutral-600">
+            后端需要 <code class="font-mono">ADMIN_TOKEN</code>，本地会保存到浏览器。
           </p>
         </div>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">最近时间</p>
-          <p class="mt-2 text-base leading-6">
-            {{ adminStatus.last_run_at || '--' }}
-          </p>
+      </template>
+      <template #bottom>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">同步状态</p>
+            <p class="mt-2 text-base leading-6">
+              {{ adminStatus.last_status || 'unknown' }}
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">最近时间</p>
+            <p class="mt-2 text-base leading-6">
+              {{ adminStatus.last_run_at || '--' }}
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <p class="text-sm font-semibold">配置数量</p>
+            <p class="mt-2 text-base leading-6">
+              {{ adminConfigs.length || 0 }} 份
+            </p>
+          </div>
         </div>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
-          <p class="text-sm font-semibold">配置数量</p>
-          <p class="mt-2 text-base leading-6">
-            {{ adminConfigs.length || 0 }} 份
-          </p>
-        </div>
-      </div>
-    </header>
+      </template>
+    </PageHeader>
 
     <section class="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
       <div class="flex flex-col gap-6">
@@ -500,6 +608,130 @@ onMounted(async () => {
               <ul class="mt-2 flex flex-col gap-2">
                 <li v-for="issue in editorIssues" :key="issue">{{ issue }}</li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-semibold leading-8">规则可视化编辑</h2>
+            <span class="text-xs font-semibold">rules.json</span>
+          </div>
+          <div class="mt-4 grid gap-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <button
+                class="h-12 w-full rounded-2xl border border-neutral-300 bg-white text-sm font-semibold"
+                @click="loadRulesDraftFromEditor"
+              >
+                从 JSON 加载
+              </button>
+              <button
+                class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+                @click="applyRulesDraftToEditor"
+              >
+                应用到 JSON
+              </button>
+            </div>
+            <div v-if="rulesDraftStatus" class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm">
+              {{ rulesDraftStatus }}
+            </div>
+            <div v-if="rulesDraftError" class="rounded-2xl border border-neutral-300 bg-neutral-50 px-4 py-3 text-sm">
+              {{ rulesDraftError }}
+            </div>
+          </div>
+
+          <div v-if="rulesDraft" class="mt-6 grid gap-6">
+            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-semibold">预算档位</p>
+                <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="addBudget">
+                  新增
+                </button>
+              </div>
+              <div class="mt-4 grid gap-3">
+                <div
+                  v-for="(budget, index) in rulesDraft.budgets"
+                  :key="`budget-${index}`"
+                  class="grid gap-3 rounded-2xl border border-neutral-200 bg-white p-3 md:grid-cols-[1fr_1fr_1fr_1fr_auto]"
+                >
+                  <input v-model="budget.id" placeholder="id" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model="budget.label" placeholder="名称" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model.number="budget.min" type="number" placeholder="min" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model.number="budget.max" type="number" placeholder="max" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="removeBudget(index)">
+                    删除
+                  </button>
+                </div>
+                <div v-if="!rulesDraft.budgets.length" class="text-xs text-neutral-500">暂无预算档位</div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-semibold">使用场景</p>
+                <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="addScenario">
+                  新增
+                </button>
+              </div>
+              <div class="mt-4 grid gap-4">
+                <div
+                  v-for="(scenario, index) in rulesDraft.scenarios"
+                  :key="`scenario-${index}`"
+                  class="rounded-2xl border border-neutral-200 bg-white p-4"
+                >
+                  <div class="grid gap-3 md:grid-cols-[1fr_1fr_1fr_1fr_auto]">
+                    <input v-model="scenario.id" placeholder="id" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                    <input v-model="scenario.label" placeholder="名称" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                    <input v-model.number="scenario.minScores.cpu" type="number" placeholder="CPU 最低分" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                    <input v-model.number="scenario.minScores.gpu" type="number" placeholder="GPU 最低分" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                    <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="removeScenario(index)">
+                      删除
+                    </button>
+                  </div>
+                  <div class="mt-3 grid gap-3 md:grid-cols-[1fr_1fr]">
+                    <input v-model.number="scenario.minVram" type="number" placeholder="最低显存(GB)" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                    <div class="text-xs text-neutral-500">权重合计建议接近 1</div>
+                  </div>
+                  <div class="mt-3 grid gap-3 md:grid-cols-4">
+                    <div v-for="key in rulesWeightKeys" :key="`weight-${scenario.id}-${key}`" class="flex items-center gap-2">
+                      <span class="w-16 text-xs font-semibold">{{ key }}</span>
+                      <input
+                        v-model.number="scenario.weights[key]"
+                        type="number"
+                        step="0.01"
+                        class="h-10 w-full rounded-2xl border border-neutral-300 px-3 text-xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div v-if="!rulesDraft.scenarios.length" class="text-xs text-neutral-500">暂无场景</div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-semibold">模式偏好</p>
+                <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="addMode">
+                  新增
+                </button>
+              </div>
+              <div class="mt-4 grid gap-4">
+                <div
+                  v-for="(mode, index) in rulesDraft.modes"
+                  :key="`mode-${index}`"
+                  class="grid gap-3 rounded-2xl border border-neutral-200 bg-white p-3 md:grid-cols-[1fr_1fr_1fr_1fr_1fr_auto]"
+                >
+                  <input v-model="mode.id" placeholder="id" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model="mode.label" placeholder="名称" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model.number="mode.scoreBias.price" type="number" step="0.01" placeholder="价格权重" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model.number="mode.scoreBias.performance" type="number" step="0.01" placeholder="性能权重" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <input v-model="mode.powerBias" placeholder="powerBias" class="h-10 rounded-2xl border border-neutral-300 px-3 text-xs" />
+                  <button class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold" @click="removeMode(index)">
+                    删除
+                  </button>
+                </div>
+                <div v-if="!rulesDraft.modes.length" class="text-xs text-neutral-500">暂无模式</div>
+              </div>
             </div>
           </div>
         </section>

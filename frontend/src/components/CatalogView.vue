@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
+import PageHeader from './PageHeader.vue'
 
 const {
   dataSource,
@@ -12,7 +13,10 @@ const {
 const catalogCategory = ref('gpus')
 const catalogBrand = ref('all')
 const catalogCpuId = ref('all')
-const catalogModelQuery = ref('')
+const catalogQuery = ref('')
+const catalogPriceMin = ref('')
+const catalogPriceMax = ref('')
+const catalogSort = ref('price-asc')
 
 const componentCategories = [
   { key: 'cpus', label: 'CPU' },
@@ -31,12 +35,19 @@ const shouldShowBrandFilter = computed(() =>
   ['cpus', 'gpus', 'motherboards', 'memory'].includes(catalogCategory.value)
 )
 const shouldShowCpuFilter = computed(() => catalogCategory.value === 'motherboards')
-const shouldShowModelFilter = computed(() => catalogCategory.value === 'motherboards')
+const shouldShowSearch = computed(() => true)
 const selectedCpuPlatform = computed(() => {
   if (catalogCpuId.value === 'all') return ''
   const match = cpuOptions.value.find((item) => item.id === catalogCpuId.value)
   return match?.platform || ''
 })
+
+const getPriceMid = (item) => {
+  if (!item?.priceRange) return Number.POSITIVE_INFINITY
+  return (item.priceRange.min + item.priceRange.max) / 2
+}
+
+const getScore = (item) => (typeof item?.score === 'number' ? item.score : 0)
 
 const getBrandKey = (category, item) => {
   if (!item) return ''
@@ -61,13 +72,32 @@ const filteredCatalogItems = computed(() => {
   if (shouldShowCpuFilter.value && selectedCpuPlatform.value) {
     items = items.filter((item) => item.platform === selectedCpuPlatform.value)
   }
-  if (shouldShowModelFilter.value && catalogModelQuery.value.trim()) {
-    const query = catalogModelQuery.value.trim().toLowerCase()
+  if (shouldShowSearch.value && catalogQuery.value.trim()) {
+    const query = catalogQuery.value.trim().toLowerCase()
     items = items.filter((item) => {
       const name = String(item.name || '').toLowerCase()
       const id = String(item.id || '').toLowerCase()
       return name.includes(query) || id.includes(query)
     })
+  }
+  if (catalogPriceMin.value) {
+    const min = Number(catalogPriceMin.value)
+    if (Number.isFinite(min)) {
+      items = items.filter((item) => (item.priceRange?.min ?? 0) >= min)
+    }
+  }
+  if (catalogPriceMax.value) {
+    const max = Number(catalogPriceMax.value)
+    if (Number.isFinite(max)) {
+      items = items.filter((item) => (item.priceRange?.max ?? Number.POSITIVE_INFINITY) <= max)
+    }
+  }
+  if (catalogSort.value === 'price-desc') {
+    items = [...items].sort((a, b) => getPriceMid(b) - getPriceMid(a))
+  } else if (catalogSort.value === 'score-desc') {
+    items = [...items].sort((a, b) => getScore(b) - getScore(a))
+  } else {
+    items = [...items].sort((a, b) => getPriceMid(a) - getPriceMid(b))
   }
   return items
 })
@@ -75,13 +105,32 @@ const filteredCatalogItems = computed(() => {
 watch(catalogCategory, () => {
   catalogBrand.value = 'all'
   catalogCpuId.value = 'all'
-  catalogModelQuery.value = ''
+  catalogQuery.value = ''
+  catalogPriceMin.value = ''
+  catalogPriceMax.value = ''
+  catalogSort.value = 'price-asc'
 })
 
 const formatPrice = (item) => {
   if (!item?.priceRange) return '--'
   return `￥${item.priceRange.min} - ￥${item.priceRange.max}`
 }
+
+const headerMeta = computed(() => {
+  const categoryLabel = componentCategories.find((item) => item.key === catalogCategory.value)?.label || '--'
+  const sourceLabel = error.value
+    ? '加载失败'
+    : loading.value
+      ? '加载中'
+      : dataSource.value === 'api'
+        ? '后端 API'
+        : '本地 JSON'
+  return [
+    `分类：${categoryLabel}`,
+    `数量：${filteredCatalogItems.value.length}`,
+    `数据源：${sourceLabel}`
+  ]
+})
 
 const buildSpecs = (category, item) => {
   switch (category) {
@@ -132,21 +181,23 @@ const buildSpecs = (category, item) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8">
-    <header class="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
-      <p class="text-sm font-semibold uppercase tracking-[0.2em]">配件库</p>
-      <div class="mt-4 flex flex-col gap-3">
-        <h1 class="text-3xl font-semibold leading-tight">配置总览</h1>
-        <p class="text-base leading-6">按分类与条件浏览全部配件配置。</p>
-      </div>
-      <div class="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-sm font-semibold">
-        <div v-if="loading">正在加载配置库...</div>
-        <div v-else-if="error">{{ error }}</div>
-        <div v-else>
-          数据来源：{{ dataSource === 'api' ? '后端 API' : '本地 JSON' }}
+  <div class="flex flex-col gap-6 md:gap-8">
+    <PageHeader
+      eyebrow="配件库"
+      title="配置总览"
+      description="按分类与条件浏览全部配件配置。"
+      :meta="headerMeta"
+    >
+      <template #right>
+        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm font-semibold">
+          <div v-if="loading">正在加载配置库...</div>
+          <div v-else-if="error">{{ error }}</div>
+          <div v-else>
+            数据来源：{{ dataSource === 'api' ? '后端 API' : '本地 JSON' }}
+          </div>
         </div>
-      </div>
-    </header>
+      </template>
+    </PageHeader>
 
     <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
       <div class="flex items-center justify-between">
@@ -184,14 +235,44 @@ const buildSpecs = (category, item) => {
             </option>
           </select>
         </label>
-        <label v-if="shouldShowModelFilter" class="flex flex-col gap-2 text-sm font-semibold">
-          主板型号
+        <label v-if="shouldShowSearch" class="flex flex-col gap-2 text-sm font-semibold">
+          搜索
           <input
-            v-model="catalogModelQuery"
+            v-model="catalogQuery"
             type="text"
-            placeholder="输入型号关键词"
+            placeholder="搜索型号或 ID"
             class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
           />
+        </label>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="flex flex-col gap-2 text-sm font-semibold">
+            价格最低
+            <input
+              v-model="catalogPriceMin"
+              type="number"
+              min="0"
+              placeholder="如 1000"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+            />
+          </label>
+          <label class="flex flex-col gap-2 text-sm font-semibold">
+            价格最高
+            <input
+              v-model="catalogPriceMax"
+              type="number"
+              min="0"
+              placeholder="如 5000"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+            />
+          </label>
+        </div>
+        <label class="flex flex-col gap-2 text-sm font-semibold">
+          排序
+          <select v-model="catalogSort" class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+            <option value="price-asc">价格从低到高</option>
+            <option value="price-desc">价格从高到低</option>
+            <option value="score-desc">评分从高到低</option>
+          </select>
         </label>
       </div>
     </section>
@@ -229,3 +310,4 @@ const buildSpecs = (category, item) => {
     </section>
   </div>
 </template>
+

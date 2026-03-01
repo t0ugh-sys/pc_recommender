@@ -12,14 +12,14 @@
 - 后端提供配置管理与定时同步，便于数据更新。
 
 ## 目录结构
-- `app/` Vue 前端工程（Vite）
-- `app/public/data/` 运行时数据（配置库与规则）
+- `frontend/` Vue 前端工程（Vite）
+- `frontend/public/data/` 运行时数据（配置库与规则）
 - `data/` 数据源原始库（可维护版本）
 - `backend/` FastAPI 后端与数据库配置
 - `docs/` 需求与调研文档
 
 ## 数据流
-1. 前端加载 `app/public/data/components.json` 与 `app/public/data/rules.json`。
+1. 前端加载 `frontend/public/data/components.json` 与 `frontend/public/data/rules.json`。
 2. 用户输入预算档位/场景/模式/显卡偏好。
 3. 规则引擎计算预算分配与部件选择。
 4. 输出配置清单、价格区间与说明。

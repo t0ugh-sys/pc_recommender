@@ -1,6 +1,7 @@
 import asyncio
 from dataclasses import dataclass
 from datetime import datetime
+import hashlib
 import json
 import logging
 import os
@@ -18,6 +19,7 @@ class SyncState:
     last_run_at: datetime | None = None
     last_status: str = "never"
     last_message: str = ""
+    last_hash: str | None = None
 
 
 state = SyncState()
@@ -57,6 +59,35 @@ def _write_json(path: Path, payload: dict) -> None:
         json.dump(payload, file, ensure_ascii=False, indent=2)
 
 
+def _hash_payloads(components: dict, rules: dict) -> str:
+    payload = json.dumps({"components": components, "rules": rules}, sort_keys=True)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _validate_payloads(components: dict, rules: dict) -> list[str]:
+    issues: list[str] = []
+    required_components = [
+        "cpus",
+        "gpus",
+        "motherboards",
+        "memory",
+        "storage",
+        "psu",
+        "coolers",
+        "cases",
+    ]
+    for key in required_components:
+        if not isinstance(components.get(key), list):
+            issues.append(f"components.{key} must be a list")
+
+    required_rules = ["budgets", "scenarios", "modes"]
+    for key in required_rules:
+        if not isinstance(rules.get(key), list):
+            issues.append(f"rules.{key} must be a list")
+
+    return issues
+
+
 def run_sync_once() -> None:
     logger.info("Sync job started")
     state.last_run_at = datetime.utcnow()
@@ -78,6 +109,19 @@ def run_sync_once() -> None:
         components = _load_json(components_path)
         rules = _load_json(rules_path)
 
+        issues = _validate_payloads(components, rules)
+        if issues:
+            raise ValueError("Invalid config payloads: " + "; ".join(issues))
+
+        payload_hash = _hash_payloads(components, rules)
+        if payload_hash == state.last_hash:
+            state.last_status = "skipped"
+            state.last_message = (
+                "No changes detected, sync skipped / "
+                "\u65e0\u66f4\u65b0\uff0c\u540c\u6b65\u5df2\u8df3\u8fc7"
+            )
+            return
+
         init_db()
         db = SessionLocal()
         try:
@@ -92,6 +136,7 @@ def run_sync_once() -> None:
             _write_json(public_dir / "rules.json", rules)
 
         state.last_status = "success"
+        state.last_hash = payload_hash
         state.last_message = (
             "Sync completed: components, rules / "
             "\u540c\u6b65\u5b8c\u6210\uff1acomponents\u3001rules"

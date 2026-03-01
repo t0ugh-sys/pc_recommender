@@ -1,7 +1,7 @@
 ﻿from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import ConfigStore
+from app.models import ConfigStore, RecommendationShare
 
 
 def get_config(db: Session, key: str) -> ConfigStore | None:
@@ -23,3 +23,19 @@ def upsert_config(db: Session, key: str, payload: dict) -> ConfigStore:
     db.commit()
     db.refresh(current)
     return current
+
+
+def create_recommendation_share(
+    db: Session, payload: dict, title: str | None = None
+) -> RecommendationShare:
+    item = RecommendationShare(payload=payload, title=title)
+    db.add(item)
+    db.commit()
+    db.refresh(item)
+    return item
+
+
+def get_recommendation_share(db: Session, share_id: str) -> RecommendationShare | None:
+    return db.execute(
+        select(RecommendationShare).where(RecommendationShare.id == share_id)
+    ).scalar_one_or_none()

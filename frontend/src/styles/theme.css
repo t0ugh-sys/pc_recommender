@@ -1,0 +1,21 @@
+:root {
+  /* Accent: light sky blue */
+  --accent: 56 144 255;
+  --accent-strong: 37 112 217;
+  --accent-soft: 219 239 255;
+
+  /* Background tint */
+  --bg-top: 255 255 255;
+  --bg-mid: 242 248 255;
+  --bg-bottom: 232 242 255;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
