@@ -311,10 +311,14 @@ onMounted(async () => {
               <span>8 项</span>
             </div>
             <div class="divide-y divide-neutral-200">
-              <div v-for="item in displayItems" :key="item.key" class="grid gap-3 px-4 py-4 md:grid-cols-[140px_1fr_160px]">
+              <div
+                v-for="item in displayItems"
+                :key="item.key"
+                class="grid gap-3 px-4 py-4 md:grid-cols-[140px_minmax(0,1fr)_160px]"
+              >
                 <div class="text-sm font-semibold">{{ categoryLabels[item.key] }}</div>
-                <div class="text-sm">
-                  {{ item.value.name }}
+                <div class="min-w-0 text-sm">
+                  <span class="block truncate font-semibold text-neutral-900">{{ item.value.name }}</span>
                   <span
                     v-if="item.key === 'memory' && result?.memorySticks"
                     class="ml-2 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800"
@@ -322,9 +326,11 @@ onMounted(async () => {
                     {{ result.memorySticks }} 根
                   </span>
                 </div>
-                <div class="text-sm md:text-right">￥{{ item.value.priceRange.min }} - ￥{{ item.value.priceRange.max }}</div>
-                <div class="text-xs md:col-span-3">
-                  {{ item.value.notes }}
+                <div class="text-sm tabular-nums md:text-right">
+                  ￥{{ item.value.priceRange.min }} - ￥{{ item.value.priceRange.max }}
+                </div>
+                <div class="text-xs leading-6 text-neutral-700 md:col-span-3">
+                  <span class="break-words">{{ item.value.notes }}</span>
                   <span class="ml-2 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800">
                     {{ categoryIcons[item.key] }}
                   </span>
@@ -335,10 +341,13 @@ onMounted(async () => {
                     <div
                       v-for="alt in getAlternatives(item.key)"
                       :key="alt.id"
-                      class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/70 bg-white/65 px-3 py-2 ring-1 ring-black/5"
+                      class="flex flex-col gap-2 rounded-2xl border border-white/70 bg-white/65 px-3 py-2 ring-1 ring-black/5 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div class="text-xs font-semibold">{{ alt.name }}</div>
-                      <div class="text-xs">{{ formatPriceRange(alt) }}</div>
+                      <div class="min-w-0">
+                        <div class="truncate text-xs font-semibold">{{ alt.name }}</div>
+                        <div class="mt-0.5 text-xs text-neutral-600 sm:hidden">{{ formatPriceRange(alt) }}</div>
+                      </div>
+                      <div class="text-xs tabular-nums text-neutral-700 max-sm:hidden">{{ formatPriceRange(alt) }}</div>
                       <button
                         v-if="form.diyMode"
                         class="rounded-full border border-[rgb(var(--accent)/0.35)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800 transition-colors hover:border-[rgb(var(--accent)/0.45)] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)]"
