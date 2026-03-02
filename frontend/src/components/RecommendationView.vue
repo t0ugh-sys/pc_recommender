@@ -57,13 +57,12 @@ const selectedMemorySticksLabel = computed(() => {
 })
 
 const headerMeta = computed(() => [
-  `预算：${selectedBudgetLabel.value}`,
-  `场景：${selectedScenarioLabel.value}`,
-  `模式：${selectedModeLabel.value}`,
-  `显卡：${selectedGpuLabel.value}`,
-  `内存代际：${selectedMemoryTypeLabel.value}`,
-  `内存条数：${selectedMemorySticksLabel.value}`,
-  `DIY：${form.value.diyMode ? '开启' : '关闭'}`
+  `预算 ${selectedBudgetLabel.value}`,
+  `场景 ${selectedScenarioLabel.value}`,
+  `模式 ${selectedModeLabel.value}`,
+  `显卡 ${selectedGpuLabel.value}`,
+  `内存 ${selectedMemoryTypeLabel.value} / ${selectedMemorySticksLabel.value}`,
+  `DIY ${form.value.diyMode ? '开' : '关'}`
 ])
 
 const formatPriceRange = (item) => {
@@ -149,7 +148,7 @@ onMounted(async () => {
       </template>
     </PageHeader>
 
-    <section class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+    <section class="grid gap-6 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
       <div class="flex flex-col gap-6">
         <section class="rounded-3xl border border-white/70 bg-white/75 p-5 shadow-sm ring-1 ring-black/5 md:p-6">
           <div class="flex items-center justify-between">
@@ -166,7 +165,7 @@ onMounted(async () => {
           <form v-if="!loading && !error" class="mt-5 grid gap-5" @submit.prevent="handleSubmit">
             <div class="grid gap-3">
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                预算档位
+                预算
                 <select
                   v-model="form.budgetId"
                   required
@@ -178,7 +177,7 @@ onMounted(async () => {
                 </select>
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                使用场景
+                场景
                 <select
                   v-model="form.scenarioId"
                   required
@@ -192,7 +191,7 @@ onMounted(async () => {
             </div>
             <div class="grid gap-3 sm:grid-cols-2">
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                偏好模式
+                模式
                 <select
                   v-model="form.modeId"
                   required
@@ -204,7 +203,7 @@ onMounted(async () => {
                 </select>
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                显卡品牌
+                显卡
                 <select
                   v-model="form.gpuBrand"
                   required
@@ -215,12 +214,12 @@ onMounted(async () => {
                   <option value="AMD">AMD</option>
                   <option value="NVIDIA">NVIDIA</option>
                 </select>
-                <span class="text-xs leading-5">无独显适合办公/轻负载。</span>
+                <span class="text-xs leading-5">无独显：办公/轻负载。</span>
               </label>
             </div>
             <div class="grid gap-3 sm:grid-cols-2">
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                内存代际
+                内存
                 <select
                   v-model="form.memoryType"
                   required
@@ -232,7 +231,7 @@ onMounted(async () => {
                 </select>
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
-                内存条数
+                条数
                 <select
                   v-model="form.memorySticks"
                   required
