@@ -21,7 +21,7 @@
         "value"
       ],
       "notes": "入门四核",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "i5-12400f",
@@ -40,7 +40,7 @@
         "mainstream"
       ],
       "notes": "主流六核",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "i5-13400f",
@@ -58,7 +58,7 @@
         "mainstream"
       ],
       "notes": "主流增强",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "i7-13700f",
@@ -76,7 +76,7 @@
         "performance"
       ],
       "notes": "高性能",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "r5-5600",
@@ -94,7 +94,7 @@
         "value"
       ],
       "notes": "性价比",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "r5-7600",
@@ -112,7 +112,7 @@
         "mainstream"
       ],
       "notes": "新平台",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     },
     {
       "id": "r7-7700",
@@ -130,7 +130,7 @@
         "performance"
       ],
       "notes": "多核",
-      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cpu_package_1.jpg?width=256"
     }
   ],
   "gpus": [
@@ -150,7 +150,7 @@
         "quiet"
       ],
       "notes": "适合轻负载",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rx-6600",
@@ -167,7 +167,7 @@
         "value"
       ],
       "notes": "1080p游戏",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rx-7600",
@@ -184,7 +184,7 @@
         "mainstream"
       ],
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rx-7800xt",
@@ -201,7 +201,7 @@
         "performance"
       ],
       "notes": "2K游戏",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rx-7900xtx",
@@ -218,7 +218,7 @@
         "performance"
       ],
       "notes": "高端",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-4060",
@@ -235,7 +235,7 @@
         "mainstream"
       ],
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-4070",
@@ -252,7 +252,7 @@
         "performance"
       ],
       "notes": "2K游戏",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-4070s",
@@ -269,7 +269,7 @@
         "performance"
       ],
       "notes": "强化",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-4090",
@@ -286,7 +286,7 @@
         "performance"
       ],
       "notes": "旗舰",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5050",
@@ -303,7 +303,7 @@
         "entry"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5060",
@@ -320,7 +320,7 @@
         "mainstream"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5060ti",
@@ -337,7 +337,7 @@
         "mainstream"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5070",
@@ -354,7 +354,7 @@
         "performance"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5070ti",
@@ -371,7 +371,7 @@
         "performance"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5080",
@@ -388,7 +388,7 @@
         "performance"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     },
     {
       "id": "rtx-5090",
@@ -405,7 +405,7 @@
         "performance"
       ],
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
     }
   ],
   "motherboards": [
@@ -423,7 +423,7 @@
         "max": 850
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "msi-b450-tomahawk-max",
@@ -439,7 +439,7 @@
         "max": 900
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "gigabyte-b450-aorus-m",
@@ -455,7 +455,7 @@
         "max": 750
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "asrock-b450m-pro4",
@@ -471,7 +471,7 @@
         "max": 700
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "msi-mag-b550-tomahawk",
@@ -487,7 +487,7 @@
         "max": 1200
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "asus-rog-b550-f",
@@ -503,7 +503,7 @@
         "max": 1400
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "gigabyte-b550-aorus-elite-v2",
@@ -519,7 +519,7 @@
         "max": 1150
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "asus-tuf-b650-plus",
@@ -535,7 +535,7 @@
         "max": 1500
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "msi-mag-b650-tomahawk-wifi",
@@ -551,7 +551,7 @@
         "max": 1700
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "gigabyte-b650-aorus-elite-ax",
@@ -567,7 +567,7 @@
         "max": 1600
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "msi-pro-b760m-a-ddr4",
@@ -583,7 +583,7 @@
         "max": 1100
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "asrock-b760m-pro-rs",
@@ -599,7 +599,7 @@
         "max": 1200
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "gigabyte-z790-aorus-elite-ax",
@@ -615,7 +615,7 @@
         "max": 2400
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     },
     {
       "id": "asus-prime-z790-p-wifi-d4",
@@ -631,7 +631,7 @@
         "max": 2200
       },
       "notes": "占位",
-      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
     }
   ],
   "memory": [
@@ -647,7 +647,7 @@
         "max": 450
       },
       "notes": "入门",
-      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/RAM%20Module%20(SDRAM-DDR4).jpg?width=256"
     },
     {
       "id": "ddr4-32",
@@ -661,7 +661,7 @@
         "max": 750
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/RAM%20Module%20(SDRAM-DDR4).jpg?width=256"
     },
     {
       "id": "ddr5-16",
@@ -675,7 +675,7 @@
         "max": 650
       },
       "notes": "入门",
-      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/RAM%20Module%20(SDRAM-DDR4).jpg?width=256"
     },
     {
       "id": "ddr5-32",
@@ -689,7 +689,7 @@
         "max": 1200
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/RAM%20Module%20(SDRAM-DDR4).jpg?width=256"
     }
   ],
   "storage": [
@@ -704,7 +704,7 @@
         "max": 350
       },
       "notes": "入门",
-      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SSD-Samsung-EVO-860-250Gb.jpg?width=256"
     },
     {
       "id": "nvme-1t-gen3",
@@ -717,7 +717,7 @@
         "max": 500
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SSD-Samsung-EVO-860-250Gb.jpg?width=256"
     },
     {
       "id": "nvme-1t-gen4",
@@ -730,7 +730,7 @@
         "max": 650
       },
       "notes": "较快",
-      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SSD-Samsung-EVO-860-250Gb.jpg?width=256"
     },
     {
       "id": "nvme-2t-gen4",
@@ -743,7 +743,7 @@
         "max": 1200
       },
       "notes": "大容量",
-      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SSD-Samsung-EVO-860-250Gb.jpg?width=256"
     }
   ],
   "psu": [
@@ -758,7 +758,7 @@
         "max": 350
       },
       "notes": "入门",
-      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Full%20modular%20ATX%20power%20supply%20unit.jpg?width=256"
     },
     {
       "id": "psu-650",
@@ -771,7 +771,7 @@
         "max": 500
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Full%20modular%20ATX%20power%20supply%20unit.jpg?width=256"
     },
     {
       "id": "psu-750",
@@ -784,7 +784,7 @@
         "max": 650
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Full%20modular%20ATX%20power%20supply%20unit.jpg?width=256"
     },
     {
       "id": "psu-850",
@@ -797,7 +797,7 @@
         "max": 900
       },
       "notes": "高端",
-      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Full%20modular%20ATX%20power%20supply%20unit.jpg?width=256"
     },
     {
       "id": "psu-1000",
@@ -810,7 +810,7 @@
         "max": 1300
       },
       "notes": "旗舰",
-      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Full%20modular%20ATX%20power%20supply%20unit.jpg?width=256"
     }
   ],
   "cases": [
@@ -824,7 +824,7 @@
         "max": 350
       },
       "notes": "紧凑",
-      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Case%20miditower.jpg?width=256"
     },
     {
       "id": "case-mid",
@@ -836,7 +836,7 @@
         "max": 500
       },
       "notes": "通用",
-      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Case%20miditower.jpg?width=256"
     },
     {
       "id": "case-air",
@@ -848,7 +848,7 @@
         "max": 700
       },
       "notes": "散热",
-      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Case%20miditower.jpg?width=256"
     }
   ],
   "coolers": [
@@ -862,7 +862,7 @@
         "max": 150
       },
       "notes": "入门",
-      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CPU%20fan%20and%20heatsink.jpg?width=256"
     },
     {
       "id": "cooler-mid",
@@ -874,7 +874,7 @@
         "max": 300
       },
       "notes": "主流",
-      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CPU%20fan%20and%20heatsink.jpg?width=256"
     },
     {
       "id": "cooler-aio",
@@ -886,7 +886,7 @@
         "max": 600
       },
       "notes": "高端",
-      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CPU%20fan%20and%20heatsink.jpg?width=256"
     }
   ]
 }
