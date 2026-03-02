@@ -8,11 +8,16 @@ defineProps({
 </script>
 
 <template>
-  <header class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm md:p-8">
+  <header
+    class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm backdrop-blur ring-1 ring-black/5 md:p-8"
+  >
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div class="min-w-0">
-          <p v-if="eyebrow" class="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          <p
+            v-if="eyebrow"
+            class="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--accent-strong))]"
+          >
             {{ eyebrow }}
           </p>
           <h1 class="mt-2 text-2xl font-semibold leading-tight md:text-3xl">
@@ -31,7 +36,7 @@ defineProps({
         <span
           v-for="(item, index) in meta"
           :key="`${index}-${item}`"
-          class="rounded-full border border-neutral-300 bg-white px-3 py-1 text-neutral-700"
+          class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-700"
         >
           {{ item }}
         </span>
@@ -43,4 +48,3 @@ defineProps({
     </div>
   </header>
 </template>
-

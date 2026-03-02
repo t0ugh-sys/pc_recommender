@@ -133,15 +133,15 @@ onMounted(async () => {
     >
       <template #bottom>
         <div class="grid gap-4 md:grid-cols-3">
-          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
             <p class="text-sm font-semibold">预算拆分</p>
             <p class="mt-2 text-sm leading-6 text-neutral-600">按场景权重分配预算。</p>
           </div>
-          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
             <p class="text-sm font-semibold">兼容校验</p>
             <p class="mt-2 text-sm leading-6 text-neutral-600">平台与规格联动校验。</p>
           </div>
-          <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
             <p class="text-sm font-semibold">功耗估算</p>
             <p class="mt-2 text-sm leading-6 text-neutral-600">给出电源冗余建议。</p>
           </div>
@@ -149,14 +149,14 @@ onMounted(async () => {
       </template>
     </PageHeader>
 
-    <section class="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+    <section class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
       <div class="flex flex-col gap-6">
-        <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">条件</h2>
             <span class="text-xs font-semibold">基础输入</span>
           </div>
-          <div class="mt-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-sm font-semibold">
+          <div class="mt-4 rounded-2xl border border-white/70 bg-white/65 p-4 text-sm font-semibold ring-1 ring-black/5">
             <div v-if="loading">正在加载配置库...</div>
             <div v-else-if="error">{{ error }}</div>
             <div v-else>
@@ -167,7 +167,11 @@ onMounted(async () => {
             <div class="grid gap-4">
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 预算档位
-                <select v-model="form.budgetId" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.budgetId"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option v-for="item in budgets" :key="item.id" :value="item.id">
                     {{ item.label }}
                   </option>
@@ -175,7 +179,11 @@ onMounted(async () => {
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 使用场景
-                <select v-model="form.scenarioId" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.scenarioId"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option v-for="item in scenarios" :key="item.id" :value="item.id">
                     {{ item.label }}
                   </option>
@@ -185,7 +193,11 @@ onMounted(async () => {
             <div class="grid gap-4 sm:grid-cols-2">
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 偏好模式
-                <select v-model="form.modeId" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.modeId"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option v-for="item in modes" :key="item.id" :value="item.id">
                     {{ item.label }}
                   </option>
@@ -193,7 +205,11 @@ onMounted(async () => {
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 显卡品牌
-                <select v-model="form.gpuBrand" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.gpuBrand"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option value="any">不限</option>
                   <option value="none">无独显</option>
                   <option value="AMD">AMD</option>
@@ -205,7 +221,11 @@ onMounted(async () => {
             <div class="grid gap-4 sm:grid-cols-2">
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 内存代际
-                <select v-model="form.memoryType" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.memoryType"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option value="auto">自动推荐</option>
                   <option value="DDR4">DDR4</option>
                   <option value="DDR5">DDR5</option>
@@ -213,32 +233,36 @@ onMounted(async () => {
               </label>
               <label class="flex flex-col gap-2 text-sm font-semibold">
                 内存条数
-                <select v-model="form.memorySticks" required class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
+                <select
+                  v-model="form.memorySticks"
+                  required
+                  class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+                >
                   <option value="auto">自动推荐</option>
                   <option value="2">2 根</option>
                   <option value="4">4 根</option>
                 </select>
               </label>
             </div>
-            <label class="flex items-center justify-between rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-4 text-sm font-semibold">
+            <label class="flex items-center justify-between rounded-2xl border border-white/70 bg-white/65 px-4 py-4 text-sm font-semibold ring-1 ring-black/5">
               DIY 模式
               <div class="flex items-center gap-4">
-                <input type="checkbox" v-model="form.diyMode" class="h-6 w-6 accent-black" />
+                <input type="checkbox" v-model="form.diyMode" class="h-6 w-6 accent-[rgb(var(--accent-strong))]" />
                 <span>允许手动调整部件</span>
               </div>
             </label>
             <button
               type="submit"
               :disabled="loading"
-              class="h-12 w-full rounded-2xl text-sm font-semibold text-white"
-              :class="loading ? 'bg-neutral-300 text-black' : 'bg-black'"
+              class="h-12 w-full rounded-2xl text-sm font-semibold text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.45)] disabled:cursor-not-allowed"
+              :class="loading ? 'bg-neutral-200 text-neutral-600' : 'bg-[rgb(var(--accent-strong))] hover:bg-[rgb(var(--accent))]'"
             >
               生成推荐
             </button>
           </form>
         </section>
 
-        <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">规则说明</h2>
             <span class="text-xs font-semibold">可调整</span>
@@ -252,36 +276,36 @@ onMounted(async () => {
       </div>
 
       <div class="flex flex-col gap-6 lg:sticky lg:top-6">
-        <section v-if="result" class="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
+        <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-8 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">结果</h2>
             <span class="text-xs font-semibold">{{ result.mode.label }}</span>
           </div>
           <div v-if="isNoGpu" class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold">
+            <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800">
               无独显配置
             </span>
-            <span class="rounded-full border border-neutral-300 px-3 py-1 text-xs">
+            <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800">
               适合办公/轻负载
             </span>
           </div>
           <div class="mt-6 grid gap-4 md:grid-cols-3">
-            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
               <p class="text-sm font-semibold">整机价格区间</p>
               <p class="mt-3 text-2xl font-semibold">
                 ￥{{ totalMin.toLocaleString() }} - ￥{{ totalMax.toLocaleString() }}
               </p>
             </div>
-            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
               <p class="text-sm font-semibold">预计功耗</p>
               <p class="mt-3 text-2xl font-semibold">{{ estimatedPower }}W</p>
             </div>
-            <div class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
               <p class="text-sm font-semibold">预算档位</p>
               <p class="mt-3 text-2xl font-semibold">{{ result.budget.label }}</p>
             </div>
           </div>
-          <div class="mt-6 rounded-2xl border border-neutral-200 bg-white">
+          <div class="mt-6 rounded-3xl border border-white/70 bg-white/70 ring-1 ring-black/5">
             <div class="flex items-center justify-between border-b border-neutral-200 px-4 py-3 text-xs font-semibold uppercase">
               <span>配置清单</span>
               <span>8 项</span>
@@ -293,7 +317,7 @@ onMounted(async () => {
                   {{ item.value.name }}
                   <span
                     v-if="item.key === 'memory' && result?.memorySticks"
-                    class="ml-2 rounded-full border border-neutral-300 px-3 py-1 text-xs"
+                    class="ml-2 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800"
                   >
                     {{ result.memorySticks }} 根
                   </span>
@@ -301,7 +325,7 @@ onMounted(async () => {
                 <div class="text-sm md:text-right">￥{{ item.value.priceRange.min }} - ￥{{ item.value.priceRange.max }}</div>
                 <div class="text-xs md:col-span-3">
                   {{ item.value.notes }}
-                  <span class="ml-2 rounded-full border border-neutral-300 px-3 py-1">
+                  <span class="ml-2 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800">
                     {{ categoryIcons[item.key] }}
                   </span>
                 </div>
@@ -311,13 +335,13 @@ onMounted(async () => {
                     <div
                       v-for="alt in getAlternatives(item.key)"
                       :key="alt.id"
-                      class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-neutral-200 bg-white px-3 py-2"
+                      class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/70 bg-white/65 px-3 py-2 ring-1 ring-black/5"
                     >
                       <div class="text-xs font-semibold">{{ alt.name }}</div>
                       <div class="text-xs">{{ formatPriceRange(alt) }}</div>
                       <button
                         v-if="form.diyMode"
-                        class="rounded-full border border-neutral-300 px-3 py-1 text-xs font-semibold"
+                        class="rounded-full border border-[rgb(var(--accent)/0.35)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800 transition-colors hover:border-[rgb(var(--accent)/0.45)] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)]"
                         @click="updateSelection(item.key, alt.id)"
                       >
                         替换
@@ -330,19 +354,23 @@ onMounted(async () => {
           </div>
         </section>
 
-        <section v-if="result?.reasons?.length" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section v-if="result?.reasons?.length" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">推荐理由</h2>
             <span class="text-xs font-semibold">简要</span>
           </div>
           <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span v-for="reason in result.reasons" :key="reason" class="rounded-full border border-neutral-300 px-3 py-1">
+            <span
+              v-for="reason in result.reasons"
+              :key="reason"
+              class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800"
+            >
               {{ reason }}
             </span>
           </div>
         </section>
 
-        <section v-if="result" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">保存与分享</h2>
             <span class="text-xs font-semibold">链接</span>
@@ -354,45 +382,45 @@ onMounted(async () => {
                 v-model="shareTitle"
                 type="text"
                 placeholder="例如：设计向 9K 预算"
-                class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+                class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
               />
             </label>
             <div class="grid gap-4 sm:grid-cols-2">
               <button
-                class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+                class="h-12 w-full rounded-2xl bg-[rgb(var(--accent-strong))] text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[rgb(var(--accent))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.45)] disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-600"
                 :disabled="shareLoading"
                 @click="handleSaveShare"
               >
                 生成分享链接
               </button>
               <button
-                class="h-12 w-full rounded-2xl border border-neutral-300 bg-white text-sm font-semibold"
+                class="h-12 w-full rounded-2xl border border-neutral-300 bg-white text-sm font-semibold shadow-sm transition-colors hover:border-[rgb(var(--accent)/0.4)] hover:bg-[rgb(var(--accent-soft))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] disabled:cursor-not-allowed"
                 :disabled="!shareUrl"
                 @click="handleCopyShare"
               >
                 复制链接
               </button>
             </div>
-            <div v-if="shareUrl" class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-xs break-all">
+            <div v-if="shareUrl" class="rounded-2xl border border-white/70 bg-white/65 px-4 py-3 text-xs break-all ring-1 ring-black/5">
               {{ shareUrl }}
             </div>
-            <div v-if="shareMessage" class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm">
+            <div v-if="shareMessage" class="rounded-2xl border border-white/70 bg-white/65 px-4 py-3 text-sm ring-1 ring-black/5">
               {{ shareMessage }}
             </div>
           </div>
         </section>
 
-        <section v-else-if="submitted" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section v-else-if="submitted" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <h2 class="text-2xl font-semibold">暂未生成结果</h2>
           <p class="mt-3 text-sm leading-6">请调整预算与偏好条件后重新生成推荐。</p>
         </section>
 
-        <section v-else class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section v-else class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <h2 class="text-2xl font-semibold">等待生成推荐</h2>
           <p class="mt-3 text-sm leading-6">完成输入条件后即可生成推荐结果。</p>
         </section>
 
-        <section v-if="form.diyMode && result" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <section v-if="form.diyMode && result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">DIY 调整</h2>
             <span class="text-xs font-semibold">实时校验</span>
@@ -401,14 +429,14 @@ onMounted(async () => {
             你可以手动替换各部件，系统会重新计算价格区间与兼容性提示。
           </p>
           <div class="mt-4 grid gap-6">
-            <div v-for="group in diyDisplayGroups" :key="group.title" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <div v-for="group in diyDisplayGroups" :key="group.title" class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
               <p class="text-sm font-semibold">{{ group.title }}</p>
               <div class="mt-4 grid gap-4 md:grid-cols-2">
                 <label v-for="item in group.items" :key="item.key" class="flex flex-col gap-2 text-sm font-semibold">
                   {{ categoryLabels[item.key] }}
                   <select
                     :value="item.value.id"
-                    class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+                    class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
                     @change="updateSelection(item.key, $event.target.value)"
                   >
                     <option v-for="option in getOptions(item.key)" :key="option.id" :value="option.id">
@@ -421,25 +449,28 @@ onMounted(async () => {
           </div>
         </section>
 
-        <section v-if="result && ((result.risks?.length ?? 0) || result.warnings.length || diyWarnings.length)" class="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
+        <section
+          v-if="result && ((result.risks?.length ?? 0) || result.warnings.length || diyWarnings.length)"
+          class="rounded-3xl border border-white/70 bg-white/70 p-6 ring-1 ring-black/5"
+        >
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-semibold">风险提示</h2>
             <span class="text-xs font-semibold">需留意</span>
           </div>
           <div class="mt-4 flex flex-col gap-3 text-sm leading-6">
-            <div v-if="result.risks?.length" class="rounded-2xl border border-neutral-200 bg-white px-4 py-3">
+            <div v-if="result.risks?.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
               <p class="text-xs font-semibold">预算风险</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="risk in result.risks" :key="risk">{{ risk }}</li>
               </ul>
             </div>
-            <div v-if="result.warnings.length" class="rounded-2xl border border-neutral-200 bg-white px-4 py-3">
+            <div v-if="result.warnings.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
               <p class="text-xs font-semibold">系统提示</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="warning in result.warnings" :key="warning">{{ warning }}</li>
               </ul>
             </div>
-            <div v-if="diyWarnings.length" class="rounded-2xl border border-neutral-200 bg-white px-4 py-3">
+            <div v-if="diyWarnings.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
               <p class="text-xs font-semibold">DIY 校验</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="warning in diyWarnings" :key="warning">{{ warning }}</li>
@@ -450,7 +481,7 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+    <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-semibold">维护说明</h2>
         <span class="text-xs font-semibold">配置可更新</span>

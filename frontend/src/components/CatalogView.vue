@@ -189,7 +189,7 @@ const buildSpecs = (category, item) => {
       :meta="headerMeta"
     >
       <template #right>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm font-semibold">
+        <div class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm font-semibold ring-1 ring-black/5">
           <div v-if="loading">正在加载配置库...</div>
           <div v-else-if="error">{{ error }}</div>
           <div v-else>
@@ -199,115 +199,131 @@ const buildSpecs = (category, item) => {
       </template>
     </PageHeader>
 
-    <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold">筛选</h2>
-        <span class="text-xs font-semibold">只读</span>
-      </div>
-      <div class="mt-4 grid gap-4">
-        <label class="flex flex-col gap-2 text-sm font-semibold">
-          分类
-          <select v-model="catalogCategory" class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
-            <option v-for="category in componentCategories" :key="category.key" :value="category.key">
-              {{ category.label }}
-            </option>
-          </select>
-        </label>
-        <div class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm">
-          当前分类：{{ componentCategories.find(item => item.key === catalogCategory)?.label || '--' }}
-          ，共 {{ filteredCatalogItems.length }} 项
+    <div class="grid gap-6 lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-start">
+      <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5 lg:sticky lg:top-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-semibold">筛选</h2>
+          <span class="text-xs font-semibold">只读</span>
         </div>
-        <label v-if="shouldShowBrandFilter" class="flex flex-col gap-2 text-sm font-semibold">
-          品牌
-          <select v-model="catalogBrand" class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
-            <option value="all">全部</option>
-            <option v-for="brand in catalogBrandOptions" :key="brand" :value="brand">
-              {{ brand }}
-            </option>
-          </select>
-        </label>
-        <label v-if="shouldShowCpuFilter" class="flex flex-col gap-2 text-sm font-semibold">
-          CPU 型号
-          <select v-model="catalogCpuId" class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
-            <option value="all">全部</option>
-            <option v-for="cpu in cpuOptions" :key="cpu.id" :value="cpu.id">
-              {{ cpu.name }}
-            </option>
-          </select>
-        </label>
-        <label v-if="shouldShowSearch" class="flex flex-col gap-2 text-sm font-semibold">
-          搜索
-          <input
-            v-model="catalogQuery"
-            type="text"
-            placeholder="搜索型号或 ID"
-            class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
-          />
-        </label>
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="mt-4 grid gap-4">
           <label class="flex flex-col gap-2 text-sm font-semibold">
-            价格最低
+            分类
+            <select
+              v-model="catalogCategory"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+            >
+              <option v-for="category in componentCategories" :key="category.key" :value="category.key">
+                {{ category.label }}
+              </option>
+            </select>
+          </label>
+          <div class="rounded-2xl border border-white/70 bg-white/65 px-4 py-3 text-sm ring-1 ring-black/5">
+            当前分类：{{ componentCategories.find(item => item.key === catalogCategory)?.label || '--' }}
+            ，共 {{ filteredCatalogItems.length }} 项
+          </div>
+          <label v-if="shouldShowBrandFilter" class="flex flex-col gap-2 text-sm font-semibold">
+            品牌
+            <select
+              v-model="catalogBrand"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+            >
+              <option value="all">全部</option>
+              <option v-for="brand in catalogBrandOptions" :key="brand" :value="brand">
+                {{ brand }}
+              </option>
+            </select>
+          </label>
+          <label v-if="shouldShowCpuFilter" class="flex flex-col gap-2 text-sm font-semibold">
+            CPU 型号
+            <select
+              v-model="catalogCpuId"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+            >
+              <option value="all">全部</option>
+              <option v-for="cpu in cpuOptions" :key="cpu.id" :value="cpu.id">
+                {{ cpu.name }}
+              </option>
+            </select>
+          </label>
+          <label v-if="shouldShowSearch" class="flex flex-col gap-2 text-sm font-semibold">
+            搜索
             <input
-              v-model="catalogPriceMin"
-              type="number"
-              min="0"
-              placeholder="如 1000"
-              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
+              v-model="catalogQuery"
+              type="text"
+              placeholder="搜索型号或 ID"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
             />
           </label>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <label class="flex flex-col gap-2 text-sm font-semibold">
+              价格最低
+              <input
+                v-model="catalogPriceMin"
+                type="number"
+                min="0"
+                placeholder="如 1000"
+                class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+              />
+            </label>
+            <label class="flex flex-col gap-2 text-sm font-semibold">
+              价格最高
+              <input
+                v-model="catalogPriceMax"
+                type="number"
+                min="0"
+                placeholder="如 5000"
+                class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+              />
+            </label>
+          </div>
           <label class="flex flex-col gap-2 text-sm font-semibold">
-            价格最高
-            <input
-              v-model="catalogPriceMax"
-              type="number"
-              min="0"
-              placeholder="如 5000"
-              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm"
-            />
+            排序
+            <select
+              v-model="catalogSort"
+              class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
+            >
+              <option value="price-asc">价格从低到高</option>
+              <option value="price-desc">价格从高到低</option>
+              <option value="score-desc">评分从高到低</option>
+            </select>
           </label>
         </div>
-        <label class="flex flex-col gap-2 text-sm font-semibold">
-          排序
-          <select v-model="catalogSort" class="h-12 rounded-2xl border border-neutral-300 bg-white px-4 text-sm">
-            <option value="price-asc">价格从低到高</option>
-            <option value="price-desc">价格从高到低</option>
-            <option value="score-desc">评分从高到低</option>
-          </select>
-        </label>
-      </div>
-    </section>
+      </section>
 
-    <section class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold">配置列表</h2>
-        <span class="text-xs font-semibold">{{ componentCategories.find(item => item.key === catalogCategory)?.label || '--' }}</span>
-      </div>
-      <div class="mt-4 grid gap-4">
-        <div
-          v-for="item in filteredCatalogItems"
-          :key="item.id"
-          class="rounded-2xl border border-neutral-200 bg-white px-4 py-4"
-        >
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p class="text-sm font-semibold">{{ item.name }}</p>
-              <p class="text-xs">{{ item.id }}</p>
+      <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-2xl font-semibold">配置列表</h2>
+          <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800">
+            {{ componentCategories.find(item => item.key === catalogCategory)?.label || '--' }}
+          </span>
+        </div>
+        <div class="mt-4 grid gap-4">
+          <div
+            v-for="item in filteredCatalogItems"
+            :key="item.id"
+            class="rounded-3xl border border-white/70 bg-white/70 px-4 py-4 ring-1 ring-black/5"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="min-w-0">
+                <p class="truncate text-sm font-semibold">{{ item.name }}</p>
+                <p class="truncate text-xs text-neutral-600">{{ item.id }}</p>
+              </div>
+              <span class="text-sm font-semibold">{{ formatPrice(item) }}</span>
             </div>
-            <span class="text-sm font-semibold">{{ formatPrice(item) }}</span>
+            <div class="mt-3 text-xs leading-6 text-neutral-700">
+              {{ buildSpecs(catalogCategory, item).join(' / ') || '暂无规格' }}
+            </div>
+            <div v-if="item.notes" class="mt-2 text-xs text-neutral-600">{{ item.notes }}</div>
           </div>
-          <div class="mt-3 text-xs leading-6">
-            {{ buildSpecs(catalogCategory, item).join(' / ') || '暂无规格' }}
+          <div
+            v-if="!filteredCatalogItems.length"
+            class="rounded-2xl border border-white/70 bg-white/65 px-4 py-3 text-sm ring-1 ring-black/5"
+          >
+            暂无数据，请稍后重试。
           </div>
-          <div v-if="item.notes" class="mt-2 text-xs">{{ item.notes }}</div>
         </div>
-        <div
-          v-if="!filteredCatalogItems.length"
-          class="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm"
-        >
-          暂无数据，请稍后重试。
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 

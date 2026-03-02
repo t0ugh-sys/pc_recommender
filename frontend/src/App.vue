@@ -161,7 +161,7 @@ watch(drawerOpen, (nextValue) => {
       :aria-hidden="drawerOpen ? 'true' : undefined"
       :inert="drawerOpen ? '' : null"
     >
-      <aside class="hidden w-64 border-r border-neutral-200/80 bg-white/90 px-6 py-8 shadow-sm backdrop-blur md:fixed md:inset-y-0 md:left-0 md:block">
+      <aside class="hidden w-64 border-r border-white/60 bg-white/70 px-6 py-8 shadow-sm backdrop-blur md:fixed md:inset-y-0 md:left-0 md:block">
         <div class="flex h-full flex-col gap-6">
           <p class="text-sm font-semibold uppercase tracking-[0.2em]">PC 配置推荐</p>
           <p class="mt-3 text-sm leading-6 text-neutral-600">推荐生成整机，配件库浏览全量配置。</p>
@@ -182,11 +182,11 @@ watch(drawerOpen, (nextValue) => {
       </aside>
 
       <main class="min-w-0 flex-1 px-4 py-6 md:px-8 md:py-8 md:pl-72">
-        <div class="flex w-full flex-col gap-6 md:gap-8">
-          <header class="sticky top-0 z-30 -mx-4 border-b border-neutral-200 bg-white/90 px-4 py-3 backdrop-blur md:hidden">
+        <div class="mx-auto flex w-full max-w-7xl flex-col gap-6 md:gap-8">
+          <header class="sticky top-0 z-30 -mx-4 border-b border-white/70 bg-white/75 px-4 py-3 backdrop-blur md:hidden">
             <div class="flex items-center justify-between gap-3">
               <button
-                class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white text-sm font-semibold"
+                class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white text-sm font-semibold shadow-sm"
                 type="button"
                 aria-label="打开菜单"
                 aria-controls="mobile-drawer"
@@ -228,7 +228,7 @@ watch(drawerOpen, (nextValue) => {
               <p id="mobile-drawer-title" class="text-sm font-semibold uppercase tracking-[0.2em]">PC 配置推荐</p>
               <button
                 ref="drawerCloseButton"
-                class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white text-sm font-semibold transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40"
+                class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-neutral-300 bg-white text-sm font-semibold shadow-sm transition-colors hover:border-[rgb(var(--accent)/0.4)] hover:bg-[rgb(var(--accent-soft))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.4)]"
                 type="button"
                 aria-label="关闭菜单"
                 @click="closeDrawer"
@@ -243,7 +243,7 @@ watch(drawerOpen, (nextValue) => {
               <button
                 v-for="item in navItems"
                 :key="item.key"
-                class="h-12 rounded-2xl px-4 text-left text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40"
+                class="h-12 rounded-2xl px-4 text-left text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.4)]"
                 type="button"
                 :aria-current="activeView === item.key ? 'page' : undefined"
                 :class="getNavButtonClass(item.key)"

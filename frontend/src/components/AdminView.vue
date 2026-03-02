@@ -532,7 +532,7 @@ onMounted(async () => {
           </div>
           <div class="mt-4 flex flex-col gap-4">
             <button
-              class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+              class="h-12 w-full rounded-2xl bg-[rgb(var(--accent-strong))] text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[rgb(var(--accent))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.45)]"
               :disabled="adminLoading"
               @click="handleAdminSync"
             >
@@ -591,7 +591,7 @@ onMounted(async () => {
                 格式化
               </button>
               <button
-                class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+                class="h-12 w-full rounded-2xl bg-[rgb(var(--accent-strong))] text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[rgb(var(--accent))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.45)]"
                 @click="handleSaveConfig"
               >
                 保存配置
@@ -626,7 +626,7 @@ onMounted(async () => {
                 从 JSON 加载
               </button>
               <button
-                class="h-12 w-full rounded-2xl bg-black text-sm font-semibold text-white"
+                class="h-12 w-full rounded-2xl bg-[rgb(var(--accent-strong))] text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[rgb(var(--accent))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.45)]"
                 @click="applyRulesDraftToEditor"
               >
                 应用到 JSON
