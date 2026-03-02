@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
+import AppIcon from './AppIcon.vue'
 
 const {
   dataSource,
@@ -202,7 +203,10 @@ const buildSpecs = (category, item) => {
     <div class="grid gap-6 lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-start">
       <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5 lg:sticky lg:top-6">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-semibold">筛选</h2>
+          <h2 class="flex items-center gap-2 text-2xl font-semibold">
+            <AppIcon name="sliders" class="text-[rgb(var(--accent-strong))]" />
+            筛选
+          </h2>
           <span class="text-xs font-semibold">只读</span>
         </div>
         <div class="mt-4 grid gap-4">
@@ -292,7 +296,10 @@ const buildSpecs = (category, item) => {
 
       <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <h2 class="text-2xl font-semibold">配置列表</h2>
+          <h2 class="flex items-center gap-2 text-2xl font-semibold">
+            <AppIcon name="boxes" class="text-[rgb(var(--accent-strong))]" />
+            配置列表
+          </h2>
           <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800">
             {{ componentCategories.find(item => item.key === catalogCategory)?.label || '--' }}
           </span>

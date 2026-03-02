@@ -3,6 +3,7 @@ import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import RecommendationView from './components/RecommendationView.vue'
 import CatalogView from './components/CatalogView.vue'
 import AdminView from './components/AdminView.vue'
+import AppIcon from './components/AppIcon.vue'
 
 const activeView = ref('recommend')
 const drawerOpen = ref(false)
@@ -12,8 +13,8 @@ const basePath = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
 let lastFocusedElement = null
 
 const navItems = [
-  { key: 'recommend', label: '推荐' },
-  { key: 'catalog', label: '配件库' }
+  { key: 'recommend', label: '推荐', icon: 'sparkles' },
+  { key: 'catalog', label: '配件库', icon: 'boxes' }
 ]
 
 const normalizePath = (path) => {
@@ -175,7 +176,10 @@ watch(drawerOpen, (nextValue) => {
               :class="getNavButtonClass(item.key)"
               @click="switchView(item.key)"
             >
-              {{ item.label }}
+              <span class="flex items-center gap-3">
+                <AppIcon :name="item.icon" :class="activeView === item.key ? 'text-white' : 'text-[rgb(var(--accent-strong))]'" />
+                <span>{{ item.label }}</span>
+              </span>
             </button>
           </div>
         </div>
@@ -249,7 +253,10 @@ watch(drawerOpen, (nextValue) => {
                 :class="getNavButtonClass(item.key)"
                 @click="switchView(item.key)"
               >
-                {{ item.label }}
+                <span class="flex items-center gap-3">
+                  <AppIcon :name="item.icon" :class="activeView === item.key ? 'text-white' : 'text-[rgb(var(--accent-strong))]'" />
+                  <span>{{ item.label }}</span>
+                </span>
               </button>
             </div>
           </div>

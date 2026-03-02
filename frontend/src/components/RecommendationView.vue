@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
+import AppIcon from './AppIcon.vue'
 
 const {
   dataSource,
@@ -152,7 +153,10 @@ onMounted(async () => {
       <div class="flex flex-col gap-6">
         <section class="rounded-3xl border border-white/70 bg-white/75 p-5 shadow-sm ring-1 ring-black/5 md:p-6">
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold">条件</h2>
+            <h2 class="flex items-center gap-2 text-xl font-semibold">
+              <AppIcon name="sliders" class="text-[rgb(var(--accent-strong))]" />
+              条件
+            </h2>
             <span class="text-xs font-semibold">基础输入</span>
           </div>
           <div class="mt-4 rounded-2xl border border-white/70 bg-white/65 p-4 text-sm font-semibold ring-1 ring-black/5">
@@ -263,7 +267,10 @@ onMounted(async () => {
 
         <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">规则说明</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="info" class="text-[rgb(var(--accent-strong))]" />
+              规则说明
+            </h2>
             <span class="text-xs font-semibold">可调整</span>
           </div>
           <ul class="mt-4 flex flex-col gap-3 text-sm leading-6">
@@ -277,7 +284,10 @@ onMounted(async () => {
       <div class="flex flex-col gap-6 lg:sticky lg:top-6">
         <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-8 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">结果</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="clipboard" class="text-[rgb(var(--accent-strong))]" />
+              结果
+            </h2>
             <span class="text-xs font-semibold">{{ result.mode.label }}</span>
           </div>
           <div v-if="isNoGpu" class="mt-4 flex flex-wrap gap-2">
@@ -374,7 +384,10 @@ onMounted(async () => {
 
         <section v-if="result?.reasons?.length" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">推荐理由</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="sparkles" class="text-[rgb(var(--accent-strong))]" />
+              推荐理由
+            </h2>
             <span class="text-xs font-semibold">简要</span>
           </div>
           <div class="mt-4 flex flex-wrap gap-2 text-xs">
@@ -390,7 +403,10 @@ onMounted(async () => {
 
         <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">保存与分享</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="share" class="text-[rgb(var(--accent-strong))]" />
+              保存与分享
+            </h2>
             <span class="text-xs font-semibold">链接</span>
           </div>
           <div class="mt-4 grid gap-4">
@@ -440,7 +456,10 @@ onMounted(async () => {
 
         <section v-if="form.diyMode && result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">DIY 调整</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="wrench" class="text-[rgb(var(--accent-strong))]" />
+              DIY 调整
+            </h2>
             <span class="text-xs font-semibold">实时校验</span>
           </div>
           <p class="mt-3 text-sm leading-6">
@@ -472,7 +491,10 @@ onMounted(async () => {
           class="rounded-3xl border border-white/70 bg-white/70 p-6 ring-1 ring-black/5"
         >
           <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-semibold">风险提示</h2>
+            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+              <AppIcon name="shield" class="text-[rgb(var(--accent-strong))]" />
+              风险提示
+            </h2>
             <span class="text-xs font-semibold">需留意</span>
           </div>
           <div class="mt-4 flex flex-col gap-3 text-sm leading-6">
@@ -501,7 +523,10 @@ onMounted(async () => {
 
     <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold">维护说明</h2>
+        <h2 class="flex items-center gap-2 text-2xl font-semibold">
+          <AppIcon name="info" class="text-[rgb(var(--accent-strong))]" />
+          维护说明
+        </h2>
         <span class="text-xs font-semibold">配置可更新</span>
       </div>
       <ul class="mt-4 flex flex-col gap-3 text-sm leading-6">
