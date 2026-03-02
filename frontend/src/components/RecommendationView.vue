@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
 import AppIcon from './AppIcon.vue'
+import RemoteImage from './RemoteImage.vue'
 
 const {
   dataSource,
@@ -327,7 +328,8 @@ onMounted(async () => {
               >
                 <div class="text-sm font-semibold">{{ categoryLabels[item.key] }}</div>
                 <div class="min-w-0 text-sm">
-                  <div class="flex min-w-0 items-center gap-2">
+                  <div class="flex min-w-0 items-center gap-3">
+                    <RemoteImage :src="item.value.imageUrl" :alt="item.value.name" :size="40" />
                     <span class="min-w-0 truncate font-semibold text-neutral-900">{{ item.value.name }}</span>
                     <span
                       v-if="item.key === 'memory' && result?.memorySticks"
@@ -362,8 +364,11 @@ onMounted(async () => {
                       :key="alt.id"
                       class="flex flex-col gap-2 rounded-2xl border border-white/70 bg-white/65 px-3 py-2 ring-1 ring-black/5 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div class="min-w-0">
-                        <div class="truncate text-xs font-semibold">{{ alt.name }}</div>
+                      <div class="flex min-w-0 items-center gap-2">
+                        <RemoteImage :src="alt.imageUrl" :alt="alt.name" :size="32" />
+                        <div class="min-w-0">
+                          <div class="truncate text-xs font-semibold">{{ alt.name }}</div>
+                        </div>
                         <div class="mt-0.5 text-xs text-neutral-600 sm:hidden">{{ formatPriceRange(alt) }}</div>
                       </div>
                       <div class="text-xs tabular-nums text-neutral-700 max-sm:hidden">{{ formatPriceRange(alt) }}</div>

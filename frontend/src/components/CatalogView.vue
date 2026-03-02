@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
 import AppIcon from './AppIcon.vue'
+import RemoteImage from './RemoteImage.vue'
 
 const {
   dataSource,
@@ -311,9 +312,12 @@ const buildSpecs = (category, item) => {
             class="rounded-3xl border border-white/70 bg-white/70 px-4 py-4 ring-1 ring-black/5"
           >
             <div class="flex flex-wrap items-center justify-between gap-3">
-              <div class="min-w-0">
-                <p class="truncate text-sm font-semibold">{{ item.name }}</p>
-                <p class="truncate text-xs text-neutral-600">{{ item.id }}</p>
+              <div class="flex min-w-0 items-center gap-3">
+                <RemoteImage :src="item.imageUrl" :alt="item.name" :size="44" />
+                <div class="min-w-0">
+                  <p class="truncate text-sm font-semibold">{{ item.name }}</p>
+                  <p class="truncate text-xs text-neutral-600">{{ item.id }}</p>
+                </div>
               </div>
               <span class="text-sm font-semibold">{{ formatPrice(item) }}</span>
             </div>
