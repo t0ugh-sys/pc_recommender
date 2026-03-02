@@ -1,4 +1,4 @@
-﻿{
+{
   "meta": {
     "currency": "CNY",
     "priceSource": "manual",
@@ -13,9 +13,15 @@
       "memoryType": "DDR4/DDR5",
       "tdp": 89,
       "score": 60,
-      "priceRange": {"min": 600, "max": 800},
-      "tags": ["value"],
-      "notes": "入门四核"
+      "priceRange": {
+        "min": 600,
+        "max": 800
+      },
+      "tags": [
+        "value"
+      ],
+      "notes": "入门四核",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "i5-12400f",
@@ -25,9 +31,16 @@
       "memoryType": "DDR4/DDR5",
       "tdp": 117,
       "score": 72,
-      "priceRange": {"min": 900, "max": 1100},
-      "tags": ["value", "mainstream"],
-      "notes": "主流六核"
+      "priceRange": {
+        "min": 900,
+        "max": 1100
+      },
+      "tags": [
+        "value",
+        "mainstream"
+      ],
+      "notes": "主流六核",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "i5-13400f",
@@ -37,9 +50,15 @@
       "memoryType": "DDR4/DDR5",
       "tdp": 148,
       "score": 80,
-      "priceRange": {"min": 1200, "max": 1500},
-      "tags": ["mainstream"],
-      "notes": "主流增强"
+      "priceRange": {
+        "min": 1200,
+        "max": 1500
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "主流增强",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "i7-13700f",
@@ -49,9 +68,15 @@
       "memoryType": "DDR4/DDR5",
       "tdp": 219,
       "score": 92,
-      "priceRange": {"min": 2300, "max": 2800},
-      "tags": ["performance"],
-      "notes": "高性能"
+      "priceRange": {
+        "min": 2300,
+        "max": 2800
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "高性能",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "r5-5600",
@@ -61,9 +86,15 @@
       "memoryType": "DDR4",
       "tdp": 65,
       "score": 68,
-      "priceRange": {"min": 700, "max": 900},
-      "tags": ["value"],
-      "notes": "性价比"
+      "priceRange": {
+        "min": 700,
+        "max": 900
+      },
+      "tags": [
+        "value"
+      ],
+      "notes": "性价比",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "r5-7600",
@@ -73,9 +104,15 @@
       "memoryType": "DDR5",
       "tdp": 88,
       "score": 82,
-      "priceRange": {"min": 1300, "max": 1600},
-      "tags": ["mainstream"],
-      "notes": "新平台"
+      "priceRange": {
+        "min": 1300,
+        "max": 1600
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "新平台",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "r7-7700",
@@ -85,9 +122,15 @@
       "memoryType": "DDR5",
       "tdp": 105,
       "score": 90,
-      "priceRange": {"min": 1700, "max": 2100},
-      "tags": ["performance"],
-      "notes": "多核"
+      "priceRange": {
+        "min": 1700,
+        "max": 2100
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "多核",
+      "imageUrl": "https://placehold.co/88x88/png?text=CPU&bg=DBEFFF&fc=2570D9"
     }
   ],
   "gpus": [
@@ -98,9 +141,16 @@
       "vram": 0,
       "power": 0,
       "score": 10,
-      "priceRange": {"min": 0, "max": 0},
-      "tags": ["office", "quiet"],
-      "notes": "适合轻负载"
+      "priceRange": {
+        "min": 0,
+        "max": 0
+      },
+      "tags": [
+        "office",
+        "quiet"
+      ],
+      "notes": "适合轻负载",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rx-6600",
@@ -109,9 +159,15 @@
       "vram": 8,
       "power": 132,
       "score": 65,
-      "priceRange": {"min": 1400, "max": 1700},
-      "tags": ["value"],
-      "notes": "1080p游戏"
+      "priceRange": {
+        "min": 1400,
+        "max": 1700
+      },
+      "tags": [
+        "value"
+      ],
+      "notes": "1080p游戏",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rx-7600",
@@ -120,9 +176,15 @@
       "vram": 8,
       "power": 165,
       "score": 72,
-      "priceRange": {"min": 2000, "max": 2400},
-      "tags": ["mainstream"],
-      "notes": "主流"
+      "priceRange": {
+        "min": 2000,
+        "max": 2400
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rx-7800xt",
@@ -131,9 +193,15 @@
       "vram": 16,
       "power": 263,
       "score": 88,
-      "priceRange": {"min": 3800, "max": 4500},
-      "tags": ["performance"],
-      "notes": "2K游戏"
+      "priceRange": {
+        "min": 3800,
+        "max": 4500
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "2K游戏",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rx-7900xtx",
@@ -142,9 +210,15 @@
       "vram": 24,
       "power": 355,
       "score": 98,
-      "priceRange": {"min": 8000, "max": 9500},
-      "tags": ["performance"],
-      "notes": "高端"
+      "priceRange": {
+        "min": 8000,
+        "max": 9500
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "高端",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-4060",
@@ -153,9 +227,15 @@
       "vram": 8,
       "power": 115,
       "score": 70,
-      "priceRange": {"min": 2200, "max": 2600},
-      "tags": ["mainstream"],
-      "notes": "主流"
+      "priceRange": {
+        "min": 2200,
+        "max": 2600
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-4070",
@@ -164,9 +244,15 @@
       "vram": 12,
       "power": 200,
       "score": 85,
-      "priceRange": {"min": 4000, "max": 4800},
-      "tags": ["performance"],
-      "notes": "2K游戏"
+      "priceRange": {
+        "min": 4000,
+        "max": 4800
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "2K游戏",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-4070s",
@@ -175,9 +261,15 @@
       "vram": 12,
       "power": 220,
       "score": 90,
-      "priceRange": {"min": 5000, "max": 5800},
-      "tags": ["performance"],
-      "notes": "强化"
+      "priceRange": {
+        "min": 5000,
+        "max": 5800
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "强化",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-4090",
@@ -186,9 +278,15 @@
       "vram": 24,
       "power": 450,
       "score": 100,
-      "priceRange": {"min": 13000, "max": 16000},
-      "tags": ["performance"],
-      "notes": "旗舰"
+      "priceRange": {
+        "min": 13000,
+        "max": 16000
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "旗舰",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5050",
@@ -197,9 +295,15 @@
       "vram": 8,
       "power": 120,
       "score": 55,
-      "priceRange": {"min": 1800, "max": 2200},
-      "tags": ["entry"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 1800,
+        "max": 2200
+      },
+      "tags": [
+        "entry"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5060",
@@ -208,9 +312,15 @@
       "vram": 8,
       "power": 140,
       "score": 65,
-      "priceRange": {"min": 2300, "max": 2700},
-      "tags": ["mainstream"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 2300,
+        "max": 2700
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5060ti",
@@ -219,9 +329,15 @@
       "vram": 12,
       "power": 160,
       "score": 72,
-      "priceRange": {"min": 3000, "max": 3600},
-      "tags": ["mainstream"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 3000,
+        "max": 3600
+      },
+      "tags": [
+        "mainstream"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5070",
@@ -230,9 +346,15 @@
       "vram": 12,
       "power": 200,
       "score": 82,
-      "priceRange": {"min": 4200, "max": 4800},
-      "tags": ["performance"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 4200,
+        "max": 4800
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5070ti",
@@ -241,9 +363,15 @@
       "vram": 16,
       "power": 240,
       "score": 88,
-      "priceRange": {"min": 5200, "max": 6200},
-      "tags": ["performance"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 5200,
+        "max": 6200
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5080",
@@ -252,9 +380,15 @@
       "vram": 16,
       "power": 300,
       "score": 95,
-      "priceRange": {"min": 7800, "max": 9000},
-      "tags": ["performance"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 7800,
+        "max": 9000
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "rtx-5090",
@@ -263,9 +397,15 @@
       "vram": 24,
       "power": 450,
       "score": 110,
-      "priceRange": {"min": 14000, "max": 18000},
-      "tags": ["performance"],
-      "notes": "占位"
+      "priceRange": {
+        "min": 14000,
+        "max": 18000
+      },
+      "tags": [
+        "performance"
+      ],
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=GPU&bg=DBEFFF&fc=2570D9"
     }
   ],
   "motherboards": [
@@ -278,8 +418,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 60,
-      "priceRange": {"min": 650, "max": 850},
-      "notes": "占位"
+      "priceRange": {
+        "min": 650,
+        "max": 850
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "msi-b450-tomahawk-max",
@@ -290,8 +434,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 62,
-      "priceRange": {"min": 700, "max": 900},
-      "notes": "占位"
+      "priceRange": {
+        "min": 700,
+        "max": 900
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "gigabyte-b450-aorus-m",
@@ -302,8 +450,12 @@
       "memoryType": "DDR4",
       "formFactor": "mATX",
       "score": 58,
-      "priceRange": {"min": 550, "max": 750},
-      "notes": "占位"
+      "priceRange": {
+        "min": 550,
+        "max": 750
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "asrock-b450m-pro4",
@@ -314,8 +466,12 @@
       "memoryType": "DDR4",
       "formFactor": "mATX",
       "score": 56,
-      "priceRange": {"min": 520, "max": 700},
-      "notes": "占位"
+      "priceRange": {
+        "min": 520,
+        "max": 700
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "msi-mag-b550-tomahawk",
@@ -326,8 +482,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 72,
-      "priceRange": {"min": 950, "max": 1200},
-      "notes": "占位"
+      "priceRange": {
+        "min": 950,
+        "max": 1200
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "asus-rog-b550-f",
@@ -338,8 +498,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 75,
-      "priceRange": {"min": 1100, "max": 1400},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1100,
+        "max": 1400
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "gigabyte-b550-aorus-elite-v2",
@@ -350,8 +514,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 70,
-      "priceRange": {"min": 900, "max": 1150},
-      "notes": "占位"
+      "priceRange": {
+        "min": 900,
+        "max": 1150
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "asus-tuf-b650-plus",
@@ -362,8 +530,12 @@
       "memoryType": "DDR5",
       "formFactor": "ATX",
       "score": 78,
-      "priceRange": {"min": 1200, "max": 1500},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1200,
+        "max": 1500
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "msi-mag-b650-tomahawk-wifi",
@@ -374,8 +546,12 @@
       "memoryType": "DDR5",
       "formFactor": "ATX",
       "score": 80,
-      "priceRange": {"min": 1400, "max": 1700},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1400,
+        "max": 1700
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "gigabyte-b650-aorus-elite-ax",
@@ -386,8 +562,12 @@
       "memoryType": "DDR5",
       "formFactor": "ATX",
       "score": 79,
-      "priceRange": {"min": 1300, "max": 1600},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1300,
+        "max": 1600
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "msi-pro-b760m-a-ddr4",
@@ -398,8 +578,12 @@
       "memoryType": "DDR4",
       "formFactor": "mATX",
       "score": 70,
-      "priceRange": {"min": 850, "max": 1100},
-      "notes": "占位"
+      "priceRange": {
+        "min": 850,
+        "max": 1100
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "asrock-b760m-pro-rs",
@@ -410,8 +594,12 @@
       "memoryType": "DDR5",
       "formFactor": "mATX",
       "score": 72,
-      "priceRange": {"min": 950, "max": 1200},
-      "notes": "占位"
+      "priceRange": {
+        "min": 950,
+        "max": 1200
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "gigabyte-z790-aorus-elite-ax",
@@ -422,8 +610,12 @@
       "memoryType": "DDR5",
       "formFactor": "ATX",
       "score": 88,
-      "priceRange": {"min": 1800, "max": 2400},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1800,
+        "max": 2400
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "asus-prime-z790-p-wifi-d4",
@@ -434,8 +626,12 @@
       "memoryType": "DDR4",
       "formFactor": "ATX",
       "score": 85,
-      "priceRange": {"min": 1700, "max": 2200},
-      "notes": "占位"
+      "priceRange": {
+        "min": 1700,
+        "max": 2200
+      },
+      "notes": "占位",
+      "imageUrl": "https://placehold.co/88x88/png?text=MB&bg=DBEFFF&fc=2570D9"
     }
   ],
   "memory": [
@@ -446,8 +642,12 @@
       "memoryType": "DDR4",
       "size": 16,
       "score": 55,
-      "priceRange": {"min": 300, "max": 450},
-      "notes": "入门"
+      "priceRange": {
+        "min": 300,
+        "max": 450
+      },
+      "notes": "入门",
+      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "ddr4-32",
@@ -456,8 +656,12 @@
       "memoryType": "DDR4",
       "size": 32,
       "score": 70,
-      "priceRange": {"min": 550, "max": 750},
-      "notes": "主流"
+      "priceRange": {
+        "min": 550,
+        "max": 750
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "ddr5-16",
@@ -466,8 +670,12 @@
       "memoryType": "DDR5",
       "size": 16,
       "score": 65,
-      "priceRange": {"min": 450, "max": 650},
-      "notes": "入门"
+      "priceRange": {
+        "min": 450,
+        "max": 650
+      },
+      "notes": "入门",
+      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "ddr5-32",
@@ -476,8 +684,12 @@
       "memoryType": "DDR5",
       "size": 32,
       "score": 80,
-      "priceRange": {"min": 850, "max": 1200},
-      "notes": "主流"
+      "priceRange": {
+        "min": 850,
+        "max": 1200
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=RAM&bg=DBEFFF&fc=2570D9"
     }
   ],
   "storage": [
@@ -487,8 +699,12 @@
       "type": "SATA",
       "size": 1,
       "score": 50,
-      "priceRange": {"min": 250, "max": 350},
-      "notes": "入门"
+      "priceRange": {
+        "min": 250,
+        "max": 350
+      },
+      "notes": "入门",
+      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "nvme-1t-gen3",
@@ -496,8 +712,12 @@
       "type": "NVMe",
       "size": 1,
       "score": 65,
-      "priceRange": {"min": 350, "max": 500},
-      "notes": "主流"
+      "priceRange": {
+        "min": 350,
+        "max": 500
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "nvme-1t-gen4",
@@ -505,8 +725,12 @@
       "type": "NVMe",
       "size": 1,
       "score": 75,
-      "priceRange": {"min": 450, "max": 650},
-      "notes": "较快"
+      "priceRange": {
+        "min": 450,
+        "max": 650
+      },
+      "notes": "较快",
+      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "nvme-2t-gen4",
@@ -514,8 +738,12 @@
       "type": "NVMe",
       "size": 2,
       "score": 85,
-      "priceRange": {"min": 800, "max": 1200},
-      "notes": "大容量"
+      "priceRange": {
+        "min": 800,
+        "max": 1200
+      },
+      "notes": "大容量",
+      "imageUrl": "https://placehold.co/88x88/png?text=SSD&bg=DBEFFF&fc=2570D9"
     }
   ],
   "psu": [
@@ -525,8 +753,12 @@
       "watt": 550,
       "efficiency": "Gold",
       "score": 55,
-      "priceRange": {"min": 250, "max": 350},
-      "notes": "入门"
+      "priceRange": {
+        "min": 250,
+        "max": 350
+      },
+      "notes": "入门",
+      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "psu-650",
@@ -534,8 +766,12 @@
       "watt": 650,
       "efficiency": "Gold",
       "score": 65,
-      "priceRange": {"min": 350, "max": 500},
-      "notes": "主流"
+      "priceRange": {
+        "min": 350,
+        "max": 500
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "psu-750",
@@ -543,8 +779,12 @@
       "watt": 750,
       "efficiency": "Gold",
       "score": 72,
-      "priceRange": {"min": 450, "max": 650},
-      "notes": "主流"
+      "priceRange": {
+        "min": 450,
+        "max": 650
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "psu-850",
@@ -552,8 +792,12 @@
       "watt": 850,
       "efficiency": "Gold",
       "score": 82,
-      "priceRange": {"min": 650, "max": 900},
-      "notes": "高端"
+      "priceRange": {
+        "min": 650,
+        "max": 900
+      },
+      "notes": "高端",
+      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "psu-1000",
@@ -561,8 +805,12 @@
       "watt": 1000,
       "efficiency": "Gold",
       "score": 90,
-      "priceRange": {"min": 900, "max": 1300},
-      "notes": "旗舰"
+      "priceRange": {
+        "min": 900,
+        "max": 1300
+      },
+      "notes": "旗舰",
+      "imageUrl": "https://placehold.co/88x88/png?text=PSU&bg=DBEFFF&fc=2570D9"
     }
   ],
   "cases": [
@@ -571,24 +819,36 @@
       "name": "mATX 机箱",
       "formFactor": "mATX",
       "score": 55,
-      "priceRange": {"min": 200, "max": 350},
-      "notes": "紧凑"
+      "priceRange": {
+        "min": 200,
+        "max": 350
+      },
+      "notes": "紧凑",
+      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "case-mid",
       "name": "中塔机箱",
       "formFactor": "ATX",
       "score": 65,
-      "priceRange": {"min": 300, "max": 500},
-      "notes": "通用"
+      "priceRange": {
+        "min": 300,
+        "max": 500
+      },
+      "notes": "通用",
+      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "case-air",
       "name": "风道机箱",
       "formFactor": "ATX",
       "score": 75,
-      "priceRange": {"min": 400, "max": 700},
-      "notes": "散热"
+      "priceRange": {
+        "min": 400,
+        "max": 700
+      },
+      "notes": "散热",
+      "imageUrl": "https://placehold.co/88x88/png?text=CASE&bg=DBEFFF&fc=2570D9"
     }
   ],
   "coolers": [
@@ -597,24 +857,36 @@
       "name": "基础风冷",
       "tdpSupport": 120,
       "score": 50,
-      "priceRange": {"min": 80, "max": 150},
-      "notes": "入门"
+      "priceRange": {
+        "min": 80,
+        "max": 150
+      },
+      "notes": "入门",
+      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "cooler-mid",
       "name": "双塔风冷",
       "tdpSupport": 200,
       "score": 70,
-      "priceRange": {"min": 180, "max": 300},
-      "notes": "主流"
+      "priceRange": {
+        "min": 180,
+        "max": 300
+      },
+      "notes": "主流",
+      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
     },
     {
       "id": "cooler-aio",
       "name": "240 水冷",
       "tdpSupport": 260,
       "score": 85,
-      "priceRange": {"min": 350, "max": 600},
-      "notes": "高端"
+      "priceRange": {
+        "min": 350,
+        "max": 600
+      },
+      "notes": "高端",
+      "imageUrl": "https://placehold.co/88x88/png?text=COOL&bg=DBEFFF&fc=2570D9"
     }
   ]
 }
