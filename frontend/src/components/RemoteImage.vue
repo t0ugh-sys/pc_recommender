@@ -42,7 +42,6 @@ const handleError = () => {
       class="h-full w-full object-cover"
       loading="lazy"
       decoding="async"
-      referrerpolicy="no-referrer"
       @error="handleError"
     />
     <div v-else class="flex h-full w-full items-center justify-center text-xs font-semibold text-neutral-500">
@@ -50,4 +49,3 @@ const handleError = () => {
     </div>
   </div>
 </template>
-

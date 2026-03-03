@@ -201,7 +201,7 @@
         "performance"
       ],
       "notes": "2K游戏",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
+      "imageUrl": "https://www.amd.com/content/dam/amd/en/images/products/graphics/2648997-amd-radeon-7800xt.jpg"
     },
     {
       "id": "rx-7900xtx",
@@ -218,7 +218,7 @@
         "performance"
       ],
       "notes": "高端",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
+      "imageUrl": "https://www.amd.com/content/dam/amd/en/images/products/graphics/2648997-amd-radeon-7900xtx.jpg"
     },
     {
       "id": "rtx-4060",
@@ -286,7 +286,7 @@
         "performance"
       ],
       "notes": "旗舰",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Graphics%20Card%20(25600081191).jpg?width=256"
+      "imageUrl": "https://images.nvidia.com/aem-dam/Solutions/geforce/ada/rtx-4090/geforce-rtx-4090-product-gallery-thumbnail-267-3.jpg"
     },
     {
       "id": "rtx-5050",
@@ -423,7 +423,7 @@
         "max": 850
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://dlcdnwebimgs.asus.com/gain/d800afe0-a268-41fc-bc4d-365a7daeb69c/w800"
     },
     {
       "id": "msi-b450-tomahawk-max",
@@ -487,7 +487,7 @@
         "max": 1200
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://storage-asset.msi.com/global/picture/image/feature/mb/B550/MAG/TOMAHAWK/msi-mag-b550-tomahawk-hero-board01.png"
     },
     {
       "id": "asus-rog-b550-f",
@@ -503,7 +503,7 @@
         "max": 1400
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://dlcdnwebimgs.asus.com/gain/CF983E55-13A3-49A5-B475-C0DFA8D413D7/w250/fwebp"
     },
     {
       "id": "gigabyte-b550-aorus-elite-v2",
@@ -583,7 +583,7 @@
         "max": 1100
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://storage-asset.msi.com/global/picture/image/feature/mb/Pro_B760M/PRO_B760M-A-Wifi-ddr4/msi-pro-b760m-a-wifi-ddr4-kv.png"
     },
     {
       "id": "asrock-b760m-pro-rs",
@@ -615,7 +615,7 @@
         "max": 2400
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://www.gigabyte.com/Image/83bf6ff72c82f5fb5b1b6838596339f8/ProductRemoveBg/34197"
     },
     {
       "id": "asus-prime-z790-p-wifi-d4",

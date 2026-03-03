@@ -1,0 +1,21 @@
+{
+  "cpus": {},
+  "gpus": {
+    "rx-7800xt": "https://www.amd.com/content/dam/amd/en/images/products/graphics/2648997-amd-radeon-7800xt.jpg",
+    "rx-7900xtx": "https://www.amd.com/content/dam/amd/en/images/products/graphics/2648997-amd-radeon-7900xtx.jpg",
+    "rtx-4090": "https://images.nvidia.com/aem-dam/Solutions/geforce/ada/rtx-4090/geforce-rtx-4090-product-gallery-thumbnail-267-3.jpg"
+  },
+  "motherboards": {
+    "msi-pro-b760m-a-ddr4": "https://storage-asset.msi.com/global/picture/image/feature/mb/Pro_B760M/PRO_B760M-A-Wifi-ddr4/msi-pro-b760m-a-wifi-ddr4-kv.png",
+    "msi-mag-b550-tomahawk": "https://storage-asset.msi.com/global/picture/image/feature/mb/B550/MAG/TOMAHAWK/msi-mag-b550-tomahawk-hero-board01.png",
+    "asus-tuf-b450-plus-ii": "https://dlcdnwebimgs.asus.com/gain/d800afe0-a268-41fc-bc4d-365a7daeb69c/w800",
+    "asus-rog-b550-f": "https://dlcdnwebimgs.asus.com/gain/CF983E55-13A3-49A5-B475-C0DFA8D413D7/w250/fwebp",
+    "gigabyte-z790-aorus-elite-ax": "https://www.gigabyte.com/Image/83bf6ff72c82f5fb5b1b6838596339f8/ProductRemoveBg/34197"
+  },
+  "memory": {},
+  "storage": {},
+  "psu": {},
+  "coolers": {},
+  "cases": {}
+}
+
