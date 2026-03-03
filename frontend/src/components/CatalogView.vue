@@ -4,6 +4,7 @@ import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
 import AppIcon from './AppIcon.vue'
 import RemoteImage from './RemoteImage.vue'
+import { formatPriceRange } from '../utils/format'
 
 const {
   dataSource,
@@ -113,10 +114,7 @@ watch(catalogCategory, () => {
   catalogSort.value = 'price-asc'
 })
 
-const formatPrice = (item) => {
-  if (!item?.priceRange) return '--'
-  return `￥${item.priceRange.min} - ￥${item.priceRange.max}`
-}
+const formatPrice = (item) => formatPriceRange(item?.priceRange)
 
 const headerMeta = computed(() => {
   const categoryLabel = componentCategories.find((item) => item.key === catalogCategory.value)?.label || '--'

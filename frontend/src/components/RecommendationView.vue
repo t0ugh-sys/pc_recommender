@@ -4,6 +4,10 @@ import { useRecommendation } from '../composables/useRecommendation'
 import PageHeader from './PageHeader.vue'
 import AppIcon from './AppIcon.vue'
 import RemoteImage from './RemoteImage.vue'
+import UiBadge from './ui/UiBadge.vue'
+import UiCard from './ui/UiCard.vue'
+import UiSectionHeader from './ui/UiSectionHeader.vue'
+import { formatMemoryKit, formatPriceRange } from '../utils/format'
 
 const {
   dataSource,
@@ -67,25 +71,7 @@ const headerMeta = computed(() => [
   `DIY:${form.value.diyMode ? '开' : '关'}`
 ])
 
-const formatCurrency = (value) => {
-  const num = Number(value)
-  if (!Number.isFinite(num)) return '--'
-  return `￥${num.toLocaleString()}`
-}
-
-const formatPriceRange = (item) => {
-  if (!item?.priceRange) return '--'
-  return `${formatCurrency(item.priceRange.min)} - ${formatCurrency(item.priceRange.max)}`
-}
-
-const formatMemoryKit = (totalSize, sticks) => {
-  const total = Number(totalSize)
-  const count = Number(sticks)
-  if (!Number.isFinite(total) || !Number.isFinite(count) || count <= 0) return ''
-  const per = total / count
-  const perLabel = Number.isInteger(per) ? String(per) : per.toFixed(1)
-  return `${perLabel}GB x${count}`
-}
+const formatPriceRangeItem = (item) => formatPriceRange(item?.priceRange)
 
 const buildShareUrl = (shareId) => {
   const url = new URL(window.location.href)
@@ -167,14 +153,12 @@ onMounted(async () => {
 
     <section class="grid gap-6 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
       <div class="flex flex-col gap-6">
-        <section class="rounded-3xl border border-white/70 bg-white/75 p-5 shadow-sm ring-1 ring-black/5 md:p-6">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-lg font-semibold">
+        <UiCard padding="md">
+          <UiSectionHeader title="条件" subtitle="输入">
+            <template #icon>
               <AppIcon name="sliders" class="text-[rgb(var(--accent-strong))]" />
-              条件
-            </h2>
-            <span class="text-xs font-semibold">输入</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <div class="mt-4 rounded-2xl border border-white/70 bg-white/65 p-4 text-sm font-semibold ring-1 ring-black/5">
             <div v-if="loading">正在加载配置库...</div>
             <div v-else-if="error">{{ error }}</div>
@@ -279,56 +263,48 @@ onMounted(async () => {
               生成推荐
             </button>
           </form>
-        </section>
+        </UiCard>
 
-        <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+        <UiCard padding="md">
+          <UiSectionHeader title="规则说明" subtitle="可调整">
+            <template #icon>
               <AppIcon name="info" class="text-[rgb(var(--accent-strong))]" />
-              规则说明
-            </h2>
-            <span class="text-xs font-semibold">可调整</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <ul class="mt-4 flex flex-col gap-3 text-sm leading-6">
             <li>按权重拆分预算，兼顾均衡与目标。</li>
             <li>平台、内存、机箱与功耗同步校验。</li>
             <li>模式决定性价比与性能倾向。</li>
           </ul>
-        </section>
+        </UiCard>
       </div>
 
       <div class="flex flex-col gap-6 lg:sticky lg:top-6">
-        <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-8 shadow-sm ring-1 ring-black/5">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+        <UiCard v-if="result" padding="lg">
+          <UiSectionHeader title="结果" :subtitle="result.mode.label">
+            <template #icon>
               <AppIcon name="clipboard" class="text-[rgb(var(--accent-strong))]" />
-              结果
-            </h2>
-            <span class="text-xs font-semibold">{{ result.mode.label }}</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <div v-if="isNoGpu" class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800">
-              无独显配置
-            </span>
-            <span class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800">
-              适合办公/轻负载
-            </span>
+            <UiBadge>无独显配置</UiBadge>
+            <UiBadge>适合办公/轻负载</UiBadge>
           </div>
           <div class="mt-6 grid gap-4 md:grid-cols-3">
-            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
+            <UiCard as="div" variant="soft" padding="sm">
               <p class="text-sm font-semibold">整机价格区间</p>
               <p class="mt-3 text-2xl font-semibold">
                 ￥{{ totalMin.toLocaleString() }} - ￥{{ totalMax.toLocaleString() }}
               </p>
-            </div>
-            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
+            </UiCard>
+            <UiCard as="div" variant="soft" padding="sm">
               <p class="text-sm font-semibold">预计功耗</p>
               <p class="mt-3 text-2xl font-semibold">{{ estimatedPower }}W</p>
-            </div>
-            <div class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
+            </UiCard>
+            <UiCard as="div" variant="soft" padding="sm">
               <p class="text-sm font-semibold">预算档位</p>
               <p class="mt-3 text-2xl font-semibold">{{ result.budget.label }}</p>
-            </div>
+            </UiCard>
           </div>
           <div class="mt-6 rounded-3xl border border-white/70 bg-white/70 ring-1 ring-black/5">
             <div class="flex items-center justify-between border-b border-neutral-200 px-4 py-3 text-xs font-semibold uppercase">
@@ -348,28 +324,25 @@ onMounted(async () => {
                     <span class="min-w-0 truncate font-semibold text-neutral-900">{{ item.value.name }}</span>
                     <span
                       v-if="item.key === 'memory' && result?.memorySticks"
-                      class="shrink-0 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800"
+                      class="shrink-0"
                     >
-                      {{ formatMemoryKit(item.value.size, result.memorySticks) || `${result.memorySticks}条` }}
+                      <UiBadge>
+                        {{ formatMemoryKit(item.value.size, result.memorySticks) || `${result.memorySticks}条` }}
+                      </UiBadge>
                     </span>
                   </div>
                   <div v-if="item.key === 'memory'" class="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-700">
-                    <span
-                      v-if="item.value?.memoryType"
-                      class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800"
-                    >
+                    <UiBadge v-if="item.value?.memoryType">
                       {{ item.value.memoryType }}
-                    </span>
+                    </UiBadge>
                   </div>
                 </div>
                 <div class="text-sm tabular-nums md:text-right">
-                  {{ formatPriceRange(item.value) }}
+                  {{ formatPriceRangeItem(item.value) }}
                 </div>
                 <div class="text-xs leading-6 text-neutral-700 md:col-span-3">
                   <span class="break-words">{{ item.value.notes }}</span>
-                  <span class="ml-2 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800">
-                    {{ categoryIcons[item.key] }}
-                  </span>
+                  <UiBadge class="ml-2">{{ categoryIcons[item.key] }}</UiBadge>
                 </div>
                 <div v-if="getAlternatives(item.key).length" class="text-xs md:col-span-3">
                   <p class="mt-2 text-xs font-semibold">备选推荐</p>
@@ -384,9 +357,9 @@ onMounted(async () => {
                         <div class="min-w-0">
                           <div class="truncate text-xs font-semibold">{{ alt.name }}</div>
                         </div>
-                        <div class="mt-0.5 text-xs text-neutral-600 sm:hidden">{{ formatPriceRange(alt) }}</div>
+                        <div class="mt-0.5 text-xs text-neutral-600 sm:hidden">{{ formatPriceRangeItem(alt) }}</div>
                       </div>
-                      <div class="text-xs tabular-nums text-neutral-700 max-sm:hidden">{{ formatPriceRange(alt) }}</div>
+                      <div class="text-xs tabular-nums text-neutral-700 max-sm:hidden">{{ formatPriceRangeItem(alt) }}</div>
                       <button
                         v-if="form.diyMode"
                         class="rounded-full border border-[rgb(var(--accent)/0.35)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs font-semibold text-neutral-800 transition-colors hover:border-[rgb(var(--accent)/0.45)] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)]"
@@ -400,35 +373,30 @@ onMounted(async () => {
               </div>
             </div>
           </div>
-        </section>
+        </UiCard>
 
-        <section v-if="result?.reasons?.length" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+        <UiCard v-if="result?.reasons?.length" padding="md">
+          <UiSectionHeader title="推荐理由" subtitle="简要">
+            <template #icon>
               <AppIcon name="sparkles" class="text-[rgb(var(--accent-strong))]" />
-              推荐理由
-            </h2>
-            <span class="text-xs font-semibold">简要</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span
+            <UiBadge
               v-for="reason in result.reasons"
               :key="reason"
-              class="rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-neutral-800"
             >
               {{ reason }}
-            </span>
+            </UiBadge>
           </div>
-        </section>
+        </UiCard>
 
-        <section v-if="result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+        <UiCard v-if="result" padding="md">
+          <UiSectionHeader title="保存与分享" subtitle="链接">
+            <template #icon>
               <AppIcon name="share" class="text-[rgb(var(--accent-strong))]" />
-              保存与分享
-            </h2>
-            <span class="text-xs font-semibold">链接</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <div class="mt-4 grid gap-4">
             <label class="flex flex-col gap-2 text-sm font-semibold">
               方案名称（可选）
@@ -462,31 +430,29 @@ onMounted(async () => {
               {{ shareMessage }}
             </div>
           </div>
-        </section>
+        </UiCard>
 
-        <section v-else-if="submitted" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <h2 class="text-2xl font-semibold">暂未生成结果</h2>
+        <UiCard v-else-if="submitted" padding="md">
+          <h2 class="text-xl font-semibold md:text-2xl">暂未生成结果</h2>
           <p class="mt-3 text-sm leading-6">请调整预算与偏好条件后重新生成推荐。</p>
-        </section>
+        </UiCard>
 
-        <section v-else class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <h2 class="text-2xl font-semibold">等待生成推荐</h2>
+        <UiCard v-else padding="md">
+          <h2 class="text-xl font-semibold md:text-2xl">等待生成推荐</h2>
           <p class="mt-3 text-sm leading-6">完成输入条件后即可生成推荐结果。</p>
-        </section>
+        </UiCard>
 
-        <section v-if="form.diyMode && result" class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+        <UiCard v-if="form.diyMode && result" padding="md">
+          <UiSectionHeader title="DIY 调整" subtitle="实时校验">
+            <template #icon>
               <AppIcon name="wrench" class="text-[rgb(var(--accent-strong))]" />
-              DIY 调整
-            </h2>
-            <span class="text-xs font-semibold">实时校验</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <p class="mt-3 text-sm leading-6">
             你可以手动替换各部件，系统会重新计算价格区间与兼容性提示。
           </p>
           <div class="mt-4 grid gap-6">
-            <div v-for="group in diyDisplayGroups" :key="group.title" class="rounded-3xl border border-white/70 bg-white/70 p-4 ring-1 ring-black/5">
+            <UiCard v-for="group in diyDisplayGroups" :key="group.title" as="div" variant="soft" padding="sm">
               <p class="text-sm font-semibold">{{ group.title }}</p>
               <div class="mt-4 grid gap-4 md:grid-cols-2">
                 <label v-for="item in group.items" :key="item.key" class="flex flex-col gap-2 text-sm font-semibold">
@@ -502,59 +468,56 @@ onMounted(async () => {
                   </select>
                 </label>
               </div>
-            </div>
+            </UiCard>
           </div>
-        </section>
+        </UiCard>
 
-        <section
+        <UiCard
           v-if="result && ((result.risks?.length ?? 0) || result.warnings.length || diyWarnings.length)"
-          class="rounded-3xl border border-white/70 bg-white/70 p-6 ring-1 ring-black/5"
+          padding="md"
+          variant="soft"
         >
-          <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-2xl font-semibold">
+          <UiSectionHeader title="风险提示" subtitle="需留意">
+            <template #icon>
               <AppIcon name="shield" class="text-[rgb(var(--accent-strong))]" />
-              风险提示
-            </h2>
-            <span class="text-xs font-semibold">需留意</span>
-          </div>
+            </template>
+          </UiSectionHeader>
           <div class="mt-4 flex flex-col gap-3 text-sm leading-6">
-            <div v-if="result.risks?.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
+            <UiCard v-if="result.risks?.length" as="div" variant="soft" padding="sm" rounded="2xl">
               <p class="text-xs font-semibold">预算风险</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="risk in result.risks" :key="risk">{{ risk }}</li>
               </ul>
-            </div>
-            <div v-if="result.warnings.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
+            </UiCard>
+            <UiCard v-if="result.warnings.length" as="div" variant="soft" padding="sm" rounded="2xl">
               <p class="text-xs font-semibold">系统提示</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="warning in result.warnings" :key="warning">{{ warning }}</li>
               </ul>
-            </div>
-            <div v-if="diyWarnings.length" class="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 ring-1 ring-black/5">
+            </UiCard>
+            <UiCard v-if="diyWarnings.length" as="div" variant="soft" padding="sm" rounded="2xl">
               <p class="text-xs font-semibold">DIY 校验</p>
               <ul class="mt-2 flex flex-col gap-2 text-sm leading-6">
                 <li v-for="warning in diyWarnings" :key="warning">{{ warning }}</li>
               </ul>
-            </div>
+            </UiCard>
           </div>
-        </section>
+        </UiCard>
       </div>
     </section>
 
-    <section class="rounded-3xl border border-white/70 bg-white/75 p-6 shadow-sm ring-1 ring-black/5">
-      <div class="flex items-center justify-between">
-        <h2 class="flex items-center gap-2 text-2xl font-semibold">
+    <UiCard padding="md">
+      <UiSectionHeader title="维护说明" subtitle="配置可更新">
+        <template #icon>
           <AppIcon name="info" class="text-[rgb(var(--accent-strong))]" />
-          维护说明
-        </h2>
-        <span class="text-xs font-semibold">配置可更新</span>
-      </div>
+        </template>
+      </UiSectionHeader>
       <ul class="mt-4 flex flex-col gap-3 text-sm leading-6">
         <li>更新 `data/components.json` 可维护配件库与价格区间。</li>
         <li>更新 `data/rules.json` 可调整预算权重与选型规则。</li>
         <li>每次更新后请同步到 `frontend/public/data/` 目录。</li>
       </ul>
-    </section>
+    </UiCard>
 
   </div>
 </template>
