@@ -439,7 +439,7 @@
         "max": 900
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://storage-asset.msi.com/global/picture/image/feature/mb/B450/B450-tomahawk-max/msi-b450-tomahawk-max-hero.png"
     },
     {
       "id": "gigabyte-b450-aorus-m",
@@ -455,7 +455,7 @@
         "max": 750
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://static.gigabyte.com/StaticFile/Image/Global/9be791e3a1167dcd11f17c082327b971/ProductRemoveBg/7688"
     },
     {
       "id": "asrock-b450m-pro4",
@@ -471,7 +471,7 @@
         "max": 700
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ASRock%20B450M%20Pro4%20komponente%20mati%C4%8Dne%20plo%C5%A1%C4%8De%2020201019.png?width=512"
     },
     {
       "id": "msi-mag-b550-tomahawk",
@@ -519,7 +519,7 @@
         "max": 1150
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://static.gigabyte.com/StaticFile/Image/Global/c624491e25d3bd2fd32558146e70da78/ProductRemoveBg/32755"
     },
     {
       "id": "asus-tuf-b650-plus",
@@ -535,7 +535,7 @@
         "max": 1500
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://dlcdnwebimgs.asus.com/gain/c9ac99df-760d-420b-9c45-f4f5ad8850d0/w800"
     },
     {
       "id": "msi-mag-b650-tomahawk-wifi",
@@ -551,7 +551,7 @@
         "max": 1700
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://storage-asset.msi.com/global/picture/image/feature/mb/MAG_B650TOMAHAWKWIFI/msi-mag-b650-tomahawk-wifi-hero.png"
     },
     {
       "id": "gigabyte-b650-aorus-elite-ax",
@@ -567,7 +567,7 @@
         "max": 1600
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://static.gigabyte.com/StaticFile/Image/Global/7e091b4770328fdbd55c46a6ce9f5a2f/ProductRemoveBg/34931"
     },
     {
       "id": "msi-pro-b760m-a-ddr4",
@@ -631,7 +631,7 @@
         "max": 2200
       },
       "notes": "占位",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer%20motherboard%2012.jpg?width=256"
+      "imageUrl": "https://dlcdnwebimgs.asus.com/gain/4939246d-77ea-4de7-a064-b3bce411012d/w800"
     }
   ],
   "memory": [

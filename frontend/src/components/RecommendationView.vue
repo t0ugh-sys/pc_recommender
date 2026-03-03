@@ -53,23 +53,38 @@ const selectedMemoryTypeLabel = computed(() => {
   return '自动'
 })
 const selectedMemorySticksLabel = computed(() => {
-  if (form.value.memorySticks === '2') return '2 根'
-  if (form.value.memorySticks === '4') return '4 根'
+  if (form.value.memorySticks === '2') return '2'
+  if (form.value.memorySticks === '4') return '4'
   return '自动'
 })
 
 const headerMeta = computed(() => [
-  `预算 ${selectedBudgetLabel.value}`,
-  `场景 ${selectedScenarioLabel.value}`,
-  `模式 ${selectedModeLabel.value}`,
-  `显卡 ${selectedGpuLabel.value}`,
-  `内存 ${selectedMemoryTypeLabel.value} / ${selectedMemorySticksLabel.value}`,
-  `DIY ${form.value.diyMode ? '开' : '关'}`
+  `预算:${selectedBudgetLabel.value}`,
+  `场景:${selectedScenarioLabel.value}`,
+  `模式:${selectedModeLabel.value}`,
+  `显卡:${selectedGpuLabel.value}`,
+  `内存:${selectedMemoryTypeLabel.value}/${selectedMemorySticksLabel.value}条`,
+  `DIY:${form.value.diyMode ? '开' : '关'}`
 ])
+
+const formatCurrency = (value) => {
+  const num = Number(value)
+  if (!Number.isFinite(num)) return '--'
+  return `￥${num.toLocaleString()}`
+}
 
 const formatPriceRange = (item) => {
   if (!item?.priceRange) return '--'
-  return `￥${item.priceRange.min} - ￥${item.priceRange.max}`
+  return `${formatCurrency(item.priceRange.min)} - ${formatCurrency(item.priceRange.max)}`
+}
+
+const formatMemoryKit = (totalSize, sticks) => {
+  const total = Number(totalSize)
+  const count = Number(sticks)
+  if (!Number.isFinite(total) || !Number.isFinite(count) || count <= 0) return ''
+  const per = total / count
+  const perLabel = Number.isInteger(per) ? String(per) : per.toFixed(1)
+  return `${perLabel}GB x${count}`
 }
 
 const buildShareUrl = (shareId) => {
@@ -154,11 +169,11 @@ onMounted(async () => {
       <div class="flex flex-col gap-6">
         <section class="rounded-3xl border border-white/70 bg-white/75 p-5 shadow-sm ring-1 ring-black/5 md:p-6">
           <div class="flex items-center justify-between">
-            <h2 class="flex items-center gap-2 text-xl font-semibold">
+            <h2 class="flex items-center gap-2 text-lg font-semibold">
               <AppIcon name="sliders" class="text-[rgb(var(--accent-strong))]" />
               条件
             </h2>
-            <span class="text-xs font-semibold">基础输入</span>
+            <span class="text-xs font-semibold">输入</span>
           </div>
           <div class="mt-4 rounded-2xl border border-white/70 bg-white/65 p-4 text-sm font-semibold ring-1 ring-black/5">
             <div v-if="loading">正在加载配置库...</div>
@@ -243,8 +258,8 @@ onMounted(async () => {
                   class="h-11 rounded-2xl border border-neutral-300 bg-white px-4 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-strong)/0.35)] focus-visible:border-[rgb(var(--accent-strong)/0.55)]"
                 >
                   <option value="auto">自动推荐</option>
-                  <option value="2">2 根</option>
-                  <option value="4">4 根</option>
+                  <option value="2">2 条</option>
+                  <option value="4">4 条</option>
                 </select>
               </label>
             </div>
@@ -335,7 +350,7 @@ onMounted(async () => {
                       v-if="item.key === 'memory' && result?.memorySticks"
                       class="shrink-0 rounded-full border border-[rgb(var(--accent)/0.25)] bg-[rgb(var(--accent-soft))] px-3 py-1 text-xs text-neutral-800"
                     >
-                      {{ result.memorySticks }} 根
+                      {{ formatMemoryKit(item.value.size, result.memorySticks) || `${result.memorySticks}条` }}
                     </span>
                   </div>
                   <div v-if="item.key === 'memory'" class="mt-1 flex flex-wrap items-center gap-2 text-xs text-neutral-700">
@@ -348,7 +363,7 @@ onMounted(async () => {
                   </div>
                 </div>
                 <div class="text-sm tabular-nums md:text-right">
-                  ￥{{ item.value.priceRange.min }} - ￥{{ item.value.priceRange.max }}
+                  {{ formatPriceRange(item.value) }}
                 </div>
                 <div class="text-xs leading-6 text-neutral-700 md:col-span-3">
                   <span class="break-words">{{ item.value.notes }}</span>

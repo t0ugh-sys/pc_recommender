@@ -151,7 +151,7 @@ watch(drawerOpen, (nextValue) => {
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-x-clip bg-neutral-100 text-black">
+  <div class="relative min-h-screen overflow-x-hidden bg-neutral-100 text-black">
     <div class="pointer-events-none absolute inset-0 -z-10">
       <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(var(--bg-top),0.8)_0%,rgba(var(--bg-mid),0.92)_45%,rgba(var(--bg-bottom),0.92)_100%)]" />
       <div class="absolute -left-20 top-16 h-64 w-64 rounded-full bg-[rgb(var(--accent-soft))] blur-3xl" />
@@ -185,7 +185,7 @@ watch(drawerOpen, (nextValue) => {
         </div>
       </aside>
 
-      <main class="min-w-0 flex-1 px-4 py-6 md:px-8 md:py-8 md:pl-72">
+      <main class="min-w-0 flex-1 px-4 py-6 md:ml-64 md:px-8 md:py-8">
         <div class="mx-auto flex w-full max-w-7xl flex-col gap-6 md:gap-8">
           <header class="sticky top-0 z-30 -mx-4 border-b border-white/70 bg-white/75 px-4 py-3 backdrop-blur md:hidden">
             <div class="flex items-center justify-between gap-3">
